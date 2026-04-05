@@ -261,6 +261,8 @@ python3 {baseDir}/scripts/publish.py \
 - `--title` / `-t`：文章标题（默认从 HTML 提取）
 - `--theme`：排版主题（仅 `--input` 模式有效）
 - `--author` / `-a`：作者名（默认读 config.json）
+- `--album`：将草稿归入指定合集，传合集名称关键词或 album_id（模糊匹配）
+- `--list-albums`：列出账号下所有合集后退出（不推送任何内容）
 - `--dry-run`：只做排版和图片上传，不推送草稿箱
 
 ### 可用主题（30 个）
