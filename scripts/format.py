@@ -44,6 +44,8 @@ CALLOUT_TYPE_COLORS = {
 
 # Gallery 核心主题列表（按用途分类，不存在的会跳过）
 GALLERY_THEMES = [
+    # 卡片系列（3，暖光/清新/静谧）— 新增，置顶展示
+    "warm-card", "fresh-card", "ocean-card",
     # 深度长文（4）
     "newspaper", "magazine", "ink", "coffee-house",
     # 科技产品（4）
@@ -1126,6 +1128,33 @@ def _inject_container_styles(html: str, theme: dict) -> str:
     return html
 
 
+def _wrap_card_sections(html: str, card_cfg: dict) -> str:
+    """把 HTML 按 h1/h2 切分成卡片 section。card_cfg 来自主题 JSON 的 'card' 字段。"""
+    card_style = (
+        f'max-width:800px;width:100%;padding:25px;box-sizing:border-box;'
+        f'background-color:{card_cfg["card_bg"]};'
+        f'background-image:{card_cfg["card_texture"]};'
+        f'background-size:{card_cfg["card_texture_size"]};'
+        f'border:{card_cfg["card_border"]};'
+        f'box-shadow:{card_cfg["card_shadow"]};'
+        f'border-radius:{card_cfg["card_radius"]}'
+    )
+
+    # 用 h1 和 h2 作为分割点（保留 h 标签在新段的开头）
+    parts = re.split(r'(?=<h[12]\s)', html)
+    if not parts:
+        return html
+
+    cards = []
+    for part in parts:
+        part = part.strip()
+        if not part:
+            continue
+        cards.append(f'<section style="{card_style}">{part}</section>')
+
+    return ''.join(cards)
+
+
 def inject_inline_styles(html: str, theme: dict, skip_wrapper: bool = False) -> str:
     """为每个 HTML 标签注入内联 style 属性"""
     styles = theme["styles"]
@@ -1275,9 +1304,19 @@ def inject_inline_styles(html: str, theme: dict, skip_wrapper: bool = False) -> 
             html,
         )
 
-    # === 8. 处理 wrapper（整体背景色，用于 dark/retro 等主题）===
+    # === 8. 卡片布局（card 系列主题：按 h2 分割成卡片）===
+    if theme.get("layout") == "card" and "card" in theme:
+        html = _wrap_card_sections(html, theme["card"])
+
+    # === 8.1 处理 wrapper（整体背景色，用于 dark/retro 等主题）===
     if "wrapper" in style_map and not skip_wrapper:
-        html = f'<section style="{style_map["wrapper"]}">{html}</section>'
+        if theme.get("layout") == "card":
+            # 卡片主题：wrapper 用 flex 列布局 + 卡片间距
+            card_bg = theme["card"]["bg"]
+            wrapper_s = f'padding:40px 10px;background-color:{card_bg};display:flex;flex-direction:column;align-items:center;gap:40px'
+            html = f'<section style="{wrapper_s}">{html}</section>'
+        else:
+            html = f'<section style="{style_map["wrapper"]}">{html}</section>'
 
     # === 9. 注入微信深色模式属性（自动补全缺失标签）===
     dark_mode = _auto_dark_mode(theme)
@@ -1486,6 +1525,7 @@ def generate_gallery(rendered_map: dict, theme_map: dict,
 
     # 生成 THEME_BUTTONS（带分组标签）
     GROUPS = [
+        ("卡片系列", ["warm-card", "fresh-card", "ocean-card"]),
         ("深度长文", ["newspaper", "magazine", "ink", "coffee-house"]),
         ("科技产品", ["bytedance", "github", "sspai", "midnight"]),
         ("文艺随笔", ["terracotta", "mint-fresh", "sunset-amber", "lavender-dream"]),
