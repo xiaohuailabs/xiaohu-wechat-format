@@ -5,3 +5,4 @@ config.json
 comment_state.json
 comment_reply.log
 .env
+.tmp_*/

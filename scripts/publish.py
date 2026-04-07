@@ -308,12 +308,14 @@ def main():
     parser.add_argument("--title", "-t", help="文章标题（默认从 HTML 提取）")
     parser.add_argument("--theme", default=None,
                         help="排版主题（仅 --input 模式有效，默认读取 gallery 选中的主题）")
-    parser.add_argument("--accent", choices=["gray", "blue", "green", "red", "navy", "gold"],
+    parser.add_argument("--accent", choices=["black", "gray", "blue", "green", "red", "navy", "gold"],
                         help="极简可调主题的强调色（仅 --input 模式有效）")
     parser.add_argument("--heading-align", choices=["left", "center", "right"],
                         help="极简可调主题的标题对齐（仅 --input 模式有效）")
-    parser.add_argument("--divider-style", choices=["solid-full", "solid-short", "none"],
+    parser.add_argument("--divider-style", choices=["solid-full", "solid-short", "soft-full", "fade-short", "bold-short", "none"],
                         help="极简可调主题的分隔线样式（仅 --input 模式有效）")
+    parser.add_argument("--strong-style", choices=["color", "highlight"],
+                        help="极简可调主题的加粗强调方式（仅 --input 模式有效）")
     parser.add_argument("--author", "-a",
                         default=CONFIG.get("wechat", {}).get("author", ""),
                         help="作者名")
@@ -329,6 +331,7 @@ def main():
         accent = args.accent
         heading_align = args.heading_align
         divider_style = args.divider_style
+        strong_style = args.strong_style
 
         if selected_style:
             if not theme:
@@ -339,6 +342,8 @@ def main():
                 heading_align = selected_style.get("heading_align")
             if theme == selected_style.get("theme_id") and not divider_style:
                 divider_style = selected_style.get("divider_style")
+            if theme == selected_style.get("theme_id") and not strong_style:
+                strong_style = selected_style.get("strong_style")
             if theme:
                 print(f"  使用已保存的样式选择: {theme}")
 
@@ -367,6 +372,8 @@ def main():
             format_cmd.extend(["--heading-align", heading_align])
         if divider_style:
             format_cmd.extend(["--divider-style", divider_style])
+        if strong_style:
+            format_cmd.extend(["--strong-style", strong_style])
         result = subprocess.run(format_cmd, capture_output=True, text=True)
         if result.returncode != 0:
             print(f"排版失败:\n{result.stderr}")

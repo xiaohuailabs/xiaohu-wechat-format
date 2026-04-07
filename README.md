@@ -105,14 +105,16 @@ python3 scripts/format.py \
   --theme minimal-flex \
   --accent blue \
   --heading-align center \
-  --divider-style solid-short
+  --divider-style fade-short \
+  --strong-style highlight
 ```
 
 Available `minimal-flex` options:
 
-- `--accent`: `gray`, `blue`, `green`, `red`, `navy`, `gold`
+- `--accent`: `black`, `gray`, `blue`, `green`, `red`, `navy`, `gold`
 - `--heading-align`: `left`, `center`, `right`
-- `--divider-style`: `solid-full`, `solid-short`, `none`
+- `--divider-style`: `solid-full`, `solid-short`, `soft-full`, `fade-short`, `bold-short`, `none`
+- `--strong-style`: `color`, `highlight`
 
 All heading levels from `#` to `#####` follow the alignment option.
 
@@ -147,7 +149,8 @@ python3 scripts/publish.py \
   --theme minimal-flex \
   --accent green \
   --heading-align right \
-  --divider-style none
+  --divider-style none \
+  --strong-style color
 ```
 
 ## Windows Notes
@@ -161,6 +164,7 @@ python3 scripts/publish.py \
 
 - Existing theme IDs stay compatible.
 - Gallery now shows a curated `极简 / minimal-flex` entry instead of listing several minimal child themes separately.
+- Gallery uses subtle defaults instead of a separate "Recommended" badge to reduce visual noise.
 - Older `minimal-*` themes are still available for direct CLI use.
 
 ## Container Syntax

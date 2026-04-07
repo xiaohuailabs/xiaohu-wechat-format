@@ -185,6 +185,7 @@ body {
             <span class="fs-label">字号</span>
             <button class="fs-btn active" data-size="15" onclick="switchFontSize(15)">15px</button>
             <button class="fs-btn" data-size="16" onclick="switchFontSize(16)">16px</button>
+            <button class="fs-btn" data-size="17" onclick="switchFontSize(17)">17px</button>
         </div>
     </div>
 
@@ -211,16 +212,13 @@ body {
 <script>
 function applyFontSizeToContainer(container, size) {
     if (!container) return;
-    container.querySelectorAll('p').forEach(function(p) {
-        var currentSize = parseInt(window.getComputedStyle(p).fontSize, 10);
-        if (currentSize >= 14 && currentSize <= 16) {
-            p.style.fontSize = size + 'px';
-            p.style.lineHeight = size === 16 ? '1.75' : '1.8';
-        }
-    });
-    container.querySelectorAll('[style*="font-size:15px"]').forEach(function(el) {
-        if (el.tagName === 'SPAN' || el.tagName === 'SECTION') {
+    container.querySelectorAll('p, span, section').forEach(function(el) {
+        var currentSize = parseInt(window.getComputedStyle(el).fontSize, 10);
+        if (currentSize >= 14 && currentSize <= 17) {
             el.style.fontSize = size + 'px';
+            if (el.tagName === 'P') {
+                el.style.lineHeight = size === 17 ? '1.72' : (size === 16 ? '1.75' : '1.8');
+            }
         }
     });
 }

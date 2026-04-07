@@ -180,17 +180,10 @@ body {
     border-radius: 50%;
     flex-shrink: 0;
 }
-.theme-btn.recommended .rec-badge {
-    position: absolute;
-    top: -8px;
-    right: -2px;
-    background: #ff8a00;
-    color: #fff;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 6px;
-    border-radius: 999px;
-    line-height: 1.1;
+.theme-btn.featured:not(.active) {
+    border-color: rgba(17,24,39,0.18);
+    background: rgba(249,250,251,0.96);
+    box-shadow: 0 8px 18px rgba(15,23,42,0.05);
 }
 .variant-panel {
     display: none;
@@ -368,9 +361,9 @@ body {
     <div class="toolbar-inner">
         <div>
             <div class="toolbar-title">{{TITLE}}</div>
-            <div class="toolbar-meta">{{WORD_COUNT}} 字 · 这是排版预览稿，复制到公众号后台后仍可微调文字</div>
+            <div class="toolbar-meta">{{WORD_COUNT}} 字 · 复制后可改字</div>
         </div>
-        <div class="toolbar-hint">先选整体风格，再按需微调</div>
+        <div class="toolbar-hint">先选风格</div>
     </div>
 </div>
 
@@ -378,19 +371,20 @@ body {
     <aside class="control-stack">
         <section class="panel">
             <div class="panel-title">基础设置</div>
-            <div class="panel-desc">先定字号和主题。画廊会实时切换到对应排版预览。</div>
+            <div class="panel-desc">先选字号，再看样式。</div>
             <div class="font-size-selector">
                 <span class="chip-label">字号</span>
                 <div class="chip-row">
                     <button class="chip-btn active" data-size="15" onclick="switchFontSize(15)">15px</button>
                     <button class="chip-btn" data-size="16" onclick="switchFontSize(16)">16px</button>
+                    <button class="chip-btn" data-size="17" onclick="switchFontSize(17)">17px</button>
                 </div>
             </div>
         </section>
 
         <section class="panel">
             <div class="panel-title">主题画廊</div>
-            <div class="panel-desc">这里只负责帮你选风格，不直接改原文。复制到公众号后台后，你仍然可以继续微调文字。</div>
+            <div class="panel-desc">只选风格，复制后还能改字。</div>
             <div class="theme-list">
 {{THEME_BUTTONS}}
             </div>
@@ -398,7 +392,7 @@ body {
 
         <section class="panel variant-panel" id="variantPanel">
             <div class="panel-title">极简主题微调</div>
-            <div class="panel-desc">仅对“极简·可调”开放。颜色会同时作用于标题和加粗文字。</div>
+            <div class="panel-desc">只对极简生效。</div>
 
             <div class="variant-block">
                 <div class="chip-label" style="margin-bottom: 8px;">强调色</div>
@@ -419,17 +413,28 @@ body {
                 <div class="chip-row">
                     <button class="chip-btn divider-btn active" data-divider="solid-full" onclick="setDividerStyle('solid-full')">整行实线</button>
                     <button class="chip-btn divider-btn" data-divider="solid-short" onclick="setDividerStyle('solid-short')">短实线</button>
+                    <button class="chip-btn divider-btn" data-divider="soft-full" onclick="setDividerStyle('soft-full')">整行淡线</button>
+                    <button class="chip-btn divider-btn" data-divider="fade-short" onclick="setDividerStyle('fade-short')">渐隐短线</button>
+                    <button class="chip-btn divider-btn" data-divider="bold-short" onclick="setDividerStyle('bold-short')">加粗短条</button>
                     <button class="chip-btn divider-btn" data-divider="none" onclick="setDividerStyle('none')">不显示</button>
+                </div>
+            </div>
+
+            <div class="variant-block">
+                <div class="chip-label" style="margin-bottom: 8px;">加粗强调</div>
+                <div class="chip-row">
+                    <button class="chip-btn strong-btn active" data-strong="color" onclick="setStrongStyle('color')">纯色强调</button>
+                    <button class="chip-btn strong-btn" data-strong="highlight" onclick="setStrongStyle('highlight')">荧光笔</button>
                 </div>
             </div>
         </section>
 
         <section class="panel">
             <div class="panel-title">操作</div>
-            <div class="panel-desc">复制按钮就能直接带走当前样式。保存当前选择只是可选项，用于后续继续发布。</div>
+            <div class="panel-desc">复制即生效，保存可选。</div>
             <div class="action-stack">
                 <button class="action-btn primary" id="copyBtn" onclick="copyCurrentPreview()">复制内容到公众号</button>
-                <button class="action-btn secondary" id="confirmBtn" onclick="confirmSelection()">保存当前选择（可选）</button>
+                <button class="action-btn secondary" id="confirmBtn" onclick="confirmSelection()">保存选择</button>
             </div>
         </section>
     </aside>
@@ -462,7 +467,8 @@ var originalPreviewHtml = {};
 var minimalPrefs = {
     accent: DEFAULT_STYLE.accent || 'gray',
     heading_align: DEFAULT_STYLE.heading_align || 'left',
-    divider_style: DEFAULT_STYLE.divider_style || 'solid-full'
+    divider_style: DEFAULT_STYLE.divider_style || 'solid-full',
+    strong_style: DEFAULT_STYLE.strong_style || 'color'
 };
 
 function renderAccentOptions() {
@@ -496,7 +502,7 @@ function persistSelection() {
 
 function updatePreviewTitle() {
     var activeBtn = document.querySelector('.theme-btn.active');
-    document.getElementById('previewTitle').textContent = activeBtn ? activeBtn.textContent.replace('推荐', '').trim() : '当前主题';
+    document.getElementById('previewTitle').textContent = activeBtn ? activeBtn.textContent.trim() : '当前主题';
 }
 
 function syncButtonState(selector, key, value) {
@@ -511,21 +517,19 @@ function syncButtonState(selector, key, value) {
 
 function applyFontSizeToContainer(container, size) {
     if (!container) return;
-    container.querySelectorAll('p').forEach(function(p) {
-        var currentSize = parseInt(window.getComputedStyle(p).fontSize, 10);
-        if (currentSize >= 14 && currentSize <= 16) {
-            p.style.fontSize = size + 'px';
-            p.style.lineHeight = size === 16 ? '1.75' : '1.8';
-        }
-    });
-    container.querySelectorAll('[style*="font-size:15px"]').forEach(function(el) {
-        if (el.tagName === 'SPAN' || el.tagName === 'SECTION') {
+    container.querySelectorAll('p, span, section').forEach(function(el) {
+        var currentSize = parseInt(window.getComputedStyle(el).fontSize, 10);
+        if (currentSize >= 14 && currentSize <= 17) {
             el.style.fontSize = size + 'px';
+            if (el.tagName === 'P') {
+                el.style.lineHeight = size === 17 ? '1.72' : (size === 16 ? '1.75' : '1.8');
+            }
         }
     });
 }
 
 function applyDividerStyle(preview, accentHex) {
+    var highlightHex = MINIMAL_ACCENTS[minimalPrefs.accent].highlight;
     preview.querySelectorAll('hr').forEach(function(hr) {
         hr.style.border = 'none';
         if (minimalPrefs.divider_style === 'none') {
@@ -539,18 +543,57 @@ function applyDividerStyle(preview, accentHex) {
         }
 
         hr.style.display = 'block';
-        hr.style.height = '1px';
-        hr.style.background = accentHex;
         hr.style.marginTop = '32px';
         hr.style.marginBottom = '32px';
         if (minimalPrefs.divider_style === 'solid-short') {
+            hr.style.height = '1px';
+            hr.style.background = accentHex;
             hr.style.width = '72px';
             hr.style.marginLeft = 'auto';
             hr.style.marginRight = 'auto';
-        } else {
+        } else if (minimalPrefs.divider_style === 'soft-full') {
+            hr.style.height = '1px';
+            hr.style.background = highlightHex;
             hr.style.width = '100%';
             hr.style.marginLeft = '0';
             hr.style.marginRight = '0';
+        } else if (minimalPrefs.divider_style === 'fade-short') {
+            hr.style.height = '1px';
+            hr.style.background = 'linear-gradient(to right, transparent, ' + highlightHex + ', ' + highlightHex + ', transparent)';
+            hr.style.width = '50%';
+            hr.style.marginLeft = 'auto';
+            hr.style.marginRight = 'auto';
+        } else if (minimalPrefs.divider_style === 'bold-short') {
+            hr.style.height = '3px';
+            hr.style.background = accentHex;
+            hr.style.width = '60%';
+            hr.style.marginLeft = 'auto';
+            hr.style.marginRight = 'auto';
+        } else {
+            hr.style.height = '1px';
+            hr.style.background = accentHex;
+            hr.style.width = '100%';
+            hr.style.marginLeft = '0';
+            hr.style.marginRight = '0';
+        }
+    });
+}
+
+function applyStrongStyle(preview, accentHex) {
+    var highlightHex = MINIMAL_ACCENTS[minimalPrefs.accent].highlight;
+    preview.querySelectorAll('strong').forEach(function(el) {
+        if (el.closest('h1, h2, h3, h4, h5')) {
+            return;
+        }
+        el.style.color = accentHex;
+        if (minimalPrefs.strong_style === 'highlight') {
+            el.style.background = 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 58%, ' + highlightHex + ' 58%, ' + highlightHex + ' 100%)';
+            el.style.padding = '0 2px';
+            el.style.display = 'inline';
+        } else {
+            el.style.background = 'none';
+            el.style.padding = '0';
+            el.style.display = 'inline';
         }
     });
 }
@@ -573,9 +616,10 @@ function renderCurrentTheme() {
             el.style.textAlign = minimalPrefs.heading_align;
             el.style.color = accentHex;
         });
-        preview.querySelectorAll('strong, a').forEach(function(el) {
+        preview.querySelectorAll('a').forEach(function(el) {
             el.style.color = accentHex;
         });
+        applyStrongStyle(preview, accentHex);
         applyDividerStyle(preview, accentHex);
     } else {
         preview.innerHTML = originalHtml;
@@ -595,6 +639,7 @@ function updateVariantPanel() {
         syncButtonState('.color-chip', 'accent', minimalPrefs.accent);
         syncButtonState('.align-btn', 'align', minimalPrefs.heading_align);
         syncButtonState('.divider-btn', 'divider', minimalPrefs.divider_style);
+        syncButtonState('.strong-btn', 'strong', minimalPrefs.strong_style);
     } else {
         panel.classList.remove('is-visible');
     }
@@ -614,10 +659,12 @@ function switchTheme(themeId) {
         selectedStyle.accent = minimalPrefs.accent;
         selectedStyle.heading_align = minimalPrefs.heading_align;
         selectedStyle.divider_style = minimalPrefs.divider_style;
+        selectedStyle.strong_style = minimalPrefs.strong_style;
     } else {
         selectedStyle.accent = null;
         selectedStyle.heading_align = null;
         selectedStyle.divider_style = null;
+        selectedStyle.strong_style = null;
     }
 
     updateVariantPanel();
@@ -650,6 +697,14 @@ function setDividerStyle(style) {
     persistSelection();
 }
 
+function setStrongStyle(style) {
+    minimalPrefs.strong_style = style;
+    selectedStyle.strong_style = style;
+    syncButtonState('.strong-btn', 'strong', style);
+    renderCurrentTheme();
+    persistSelection();
+}
+
 function switchFontSize(size) {
     selectedStyle.font_size = size;
     syncButtonState('.chip-btn[data-size]', 'size', String(size));
@@ -659,14 +714,14 @@ function switchFontSize(size) {
 
 function resetActionButtons() {
     var confirmBtn = document.getElementById('confirmBtn');
-    confirmBtn.textContent = '保存当前选择（可选）';
+    confirmBtn.textContent = '保存选择';
     confirmBtn.classList.remove('copied');
 }
 
 function confirmSelection() {
     persistSelection();
     var btn = document.getElementById('confirmBtn');
-    btn.textContent = '当前选择已保存';
+    btn.textContent = '已保存';
     btn.classList.add('copied');
 }
 
@@ -732,6 +787,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (parsed.accent) minimalPrefs.accent = parsed.accent;
             if (parsed.heading_align) minimalPrefs.heading_align = parsed.heading_align;
             if (parsed.divider_style) minimalPrefs.divider_style = parsed.divider_style;
+            if (parsed.strong_style) minimalPrefs.strong_style = parsed.strong_style;
         }
     } catch (e) {}
 

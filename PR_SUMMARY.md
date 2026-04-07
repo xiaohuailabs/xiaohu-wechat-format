@@ -20,6 +20,7 @@ This round improves the formatting workflow for both Claude and Codex, upgrades 
 - Grouped major theme categories on separate rows instead of mixing category labels with buttons.
 - Added a clear note that users can still fine-tune text after pasting into WeChat.
 - Made the copy button carry the current style directly, so users do not need to click a separate confirm button first.
+- Removed the separate "Recommended" badge and switched to subtler default emphasis.
 
 #### 3. Adjustable minimal theme
 
@@ -28,9 +29,10 @@ This round improves the formatting workflow for both Claude and Codex, upgrades 
   - `accent`
   - `heading_align`
   - `divider_style`
+  - `strong_style`
 - Applied heading alignment to heading levels `#` through `#####`.
 - Linked heading color and bold text color to the same selected accent.
-- Simplified divider options to full-width solid, short solid, or hidden.
+- Expanded divider options and added a highlight-style bold treatment.
 
 #### 4. Style persistence
 
@@ -79,17 +81,19 @@ This round improves the formatting workflow for both Claude and Codex, upgrades 
 - 把主干主题分类拆成独立行显示，不再把分类名和按钮混排
 - 增加提醒：复制到公众号后台后，用户仍然可以继续微调文字
 - “复制内容”按钮现在会直接带走当前样式，不需要先点确认
+- 去掉单独的“推荐”角标，改成更克制的默认强调
 
 #### 3. 可调极简主题
 
 - 新增 `minimal-flex`，作为 gallery 里唯一的极简入口
-- 增加 3 个可调维度：
+- 增加 4 个可调维度：
   - `accent`
   - `heading_align`
   - `divider_style`
+  - `strong_style`
 - 标题对齐从 `#` 一直覆盖到 `#####`
 - 标题颜色和加粗文字颜色共用同一强调色
-- 分隔线样式统一为整行实线、短实线、隐藏三种
+- 分隔线扩展为更多轻重样式，并补了荧光笔式加粗强调
 
 #### 4. 样式选择持久化
 

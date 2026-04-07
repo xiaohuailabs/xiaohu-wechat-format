@@ -105,14 +105,16 @@ python3 scripts/format.py \
   --theme minimal-flex \
   --accent blue \
   --heading-align center \
-  --divider-style solid-short
+  --divider-style fade-short \
+  --strong-style highlight
 ```
 
 `minimal-flex` 支持：
 
-- `--accent`：`gray`、`blue`、`green`、`red`、`navy`、`gold`
+- `--accent`：`black`、`gray`、`blue`、`green`、`red`、`navy`、`gold`
 - `--heading-align`：`left`、`center`、`right`
-- `--divider-style`：`solid-full`、`solid-short`、`none`
+- `--divider-style`：`solid-full`、`solid-short`、`soft-full`、`fade-short`、`bold-short`、`none`
+- `--strong-style`：`color`、`highlight`
 
 从 `#` 到 `#####` 的标题都会跟随对齐设置。
 
@@ -147,7 +149,8 @@ python3 scripts/publish.py \
   --theme minimal-flex \
   --accent green \
   --heading-align right \
-  --divider-style none
+  --divider-style none \
+  --strong-style color
 ```
 
 ## Windows 说明
@@ -161,6 +164,7 @@ python3 scripts/publish.py \
 
 - 旧主题 ID 保持兼容。
 - 画廊里的极简组现在只保留一个 `minimal-flex` 入口。
+- 画廊不再额外显示“推荐”小角标，默认样式改成更克制的弱提示。
 - 旧的 `minimal-*` 主题仍然可以通过命令行直接调用。
 
 ## 容器语法

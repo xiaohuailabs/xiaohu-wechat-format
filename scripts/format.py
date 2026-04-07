@@ -71,17 +71,28 @@ GALLERY_GROUPS = [
 ]
 MINIMAL_FLEX_THEME_ID = "minimal-flex"
 MINIMAL_FLEX_BASE_ACCENT = "#4E5969"
-MINIMAL_FLEX_ACCENTS = {
-    "gray": {"label": "石板灰", "hex": "#4E5969"},
-    "blue": {"label": "主题蓝", "hex": "#4B6EF5"},
-    "green": {"label": "松针绿", "hex": "#2BAE85"},
-    "red": {"label": "焦点红", "hex": "#F25C54"},
-    "navy": {"label": "藏青", "hex": "#1F4F8A"},
-    "gold": {"label": "暖金", "hex": "#C8A062"},
-}
 MINIMAL_FLEX_ALIGNS = ["left", "center", "right"]
-MINIMAL_FLEX_DIVIDERS = ["solid-full", "solid-short", "none"]
 DEFAULT_FONT_SIZE = 15
+
+MINIMAL_FLEX_ACCENTS = {
+    "black": {"label": "极简黑", "hex": "#111111", "highlight": "rgba(209,213,219,0.88)"},
+    "gray": {"label": "石板灰", "hex": "#4E5969", "highlight": "rgba(209,213,219,0.72)"},
+    "blue": {"label": "主题蓝", "hex": "#4B6EF5", "highlight": "rgba(191,219,254,0.82)"},
+    "green": {"label": "松针绿", "hex": "#2BAE85", "highlight": "rgba(187,247,208,0.82)"},
+    "red": {"label": "焦点红", "hex": "#F25C54", "highlight": "rgba(254,205,211,0.84)"},
+    "navy": {"label": "藏青", "hex": "#1F4F8A", "highlight": "rgba(191,219,254,0.70)"},
+    "gold": {"label": "暖金", "hex": "#C8A062", "highlight": "rgba(253,230,138,0.80)"},
+}
+MINIMAL_FLEX_DIVIDERS = [
+    "solid-full",
+    "solid-short",
+    "soft-full",
+    "fade-short",
+    "bold-short",
+    "none",
+]
+MINIMAL_FLEX_STRONG_STYLES = ["color", "highlight"]
+MINIMAL_FLEX_FONT_SIZES = [15, 16, 17]
 
 # Gallery 示例文章（写死，不用用户文章）
 GALLERY_DEMO_MARKDOWN = """\
@@ -148,6 +159,7 @@ def resolve_output_dir(input_path: Path, explicit_output: str | None) -> Path:
 def build_style_selection(theme_id: str, accent: str | None = None,
                           heading_align: str | None = None,
                           divider_style: str | None = None,
+                          strong_style: str | None = None,
                           font_size: int = DEFAULT_FONT_SIZE) -> dict:
     """规范化样式选择结果。"""
     selection = {
@@ -155,11 +167,12 @@ def build_style_selection(theme_id: str, accent: str | None = None,
         "accent": None,
         "heading_align": None,
         "divider_style": None,
+        "strong_style": None,
         "font_size": int(font_size) if font_size else DEFAULT_FONT_SIZE,
     }
 
     if theme_id != MINIMAL_FLEX_THEME_ID:
-        if accent or heading_align or divider_style:
+        if accent or heading_align or divider_style or strong_style:
             raise ValueError(
                 f"主题 '{theme_id}' 不支持 --accent / --heading-align / --divider-style。"
             )
@@ -168,6 +181,7 @@ def build_style_selection(theme_id: str, accent: str | None = None,
     normalized_accent = accent or "gray"
     normalized_align = heading_align or "left"
     normalized_divider = divider_style or "solid-full"
+    normalized_strong = strong_style or "color"
 
     if normalized_accent not in MINIMAL_FLEX_ACCENTS:
         raise ValueError(
@@ -182,10 +196,16 @@ def build_style_selection(theme_id: str, accent: str | None = None,
             f"不支持的 divider_style: {normalized_divider}，可用值: {', '.join(MINIMAL_FLEX_DIVIDERS)}"
         )
 
+    if normalized_strong not in MINIMAL_FLEX_STRONG_STYLES:
+        raise ValueError(
+            f"不支持的 strong_style: {normalized_strong}，可用值: {', '.join(MINIMAL_FLEX_STRONG_STYLES)}"
+        )
+
     selection.update({
         "accent": normalized_accent,
         "heading_align": normalized_align,
         "divider_style": normalized_divider,
+        "strong_style": normalized_strong,
     })
     return selection
 
@@ -198,6 +218,7 @@ def write_selected_style(selection: dict, output_dir: Path = SELECTION_DIR) -> N
         selection.get("accent"),
         selection.get("heading_align"),
         selection.get("divider_style"),
+        selection.get("strong_style"),
         selection.get("font_size", DEFAULT_FONT_SIZE),
     )
     (output_dir / STYLE_SELECTION_FILE.name).write_text(
@@ -222,6 +243,7 @@ def read_selected_style(selection_dir: Path = SELECTION_DIR) -> dict | None:
             raw.get("accent"),
             raw.get("heading_align"),
             raw.get("divider_style"),
+            raw.get("strong_style"),
             raw.get("font_size", DEFAULT_FONT_SIZE),
         )
     except Exception:
@@ -239,12 +261,15 @@ def apply_theme_variants(theme_name: str, theme: dict, selection: dict | None) -
         selection.get("accent") if selection else None,
         selection.get("heading_align") if selection else None,
         selection.get("divider_style") if selection else None,
+        selection.get("strong_style") if selection else None,
         selection.get("font_size", DEFAULT_FONT_SIZE) if selection else DEFAULT_FONT_SIZE,
     )
 
     accent_hex = MINIMAL_FLEX_ACCENTS[selection["accent"]]["hex"]
+    highlight_hex = MINIMAL_FLEX_ACCENTS[selection["accent"]]["highlight"]
     heading_align = selection["heading_align"]
     divider_style = selection["divider_style"]
+    strong_style = selection["strong_style"]
 
     final_theme["name"] = (
         f'{theme.get("name", "极简·可调")} · '
@@ -255,7 +280,7 @@ def apply_theme_variants(theme_name: str, theme: dict, selection: dict | None) -
     final_theme["colors"]["hr_color"] = accent_hex
 
     styles = final_theme.setdefault("styles", {})
-    for key in ("h1", "h2", "h3", "h4", "h5", "strong", "a", "footnote_sup", "callout_title"):
+    for key in ("h1", "h2", "h3", "h4", "h5", "a", "footnote_sup", "callout_title"):
         if key in styles:
             styles[key]["color"] = accent_hex
     for key in ("h1", "h2", "h3", "h4", "h5"):
@@ -267,11 +292,26 @@ def apply_theme_variants(theme_name: str, theme: dict, selection: dict | None) -
     if "ol_item_bullet" in styles:
         styles["ol_item_bullet"]["color"] = accent_hex
 
+    strong_styles = styles.setdefault("strong", {})
+    strong_styles["color"] = accent_hex
+    if strong_style == "highlight":
+        strong_styles.update({
+            "background": f"linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 58%, {highlight_hex} 58%, {highlight_hex} 100%)",
+            "padding": "0 2px",
+            "display": "inline",
+        })
+    else:
+        strong_styles.pop("background", None)
+        strong_styles.pop("padding", None)
+        strong_styles.pop("display", None)
+
     hr_styles = styles.setdefault("hr", {})
     hr_styles.update({
         "height": "1px",
         "border": "none",
         "background": accent_hex,
+        "margin_top": "32px",
+        "margin_bottom": "32px",
     })
     if divider_style == "solid-full":
         hr_styles.update({
@@ -283,6 +323,33 @@ def apply_theme_variants(theme_name: str, theme: dict, selection: dict | None) -
     elif divider_style == "solid-short":
         hr_styles.update({
             "width": "72px",
+            "margin_left": "auto",
+            "margin_right": "auto",
+            "display": "block",
+        })
+    elif divider_style == "soft-full":
+        hr_styles.update({
+            "width": "100%",
+            "height": "1px",
+            "background": highlight_hex,
+            "margin_left": "0",
+            "margin_right": "0",
+            "display": "block",
+        })
+    elif divider_style == "fade-short":
+        hr_styles.update({
+            "width": "50%",
+            "height": "1px",
+            "background": f"linear-gradient(to right, transparent, {highlight_hex}, {highlight_hex}, transparent)",
+            "margin_left": "auto",
+            "margin_right": "auto",
+            "display": "block",
+        })
+    elif divider_style == "bold-short":
+        hr_styles.update({
+            "width": "60%",
+            "height": "3px",
+            "background": accent_hex,
             "margin_left": "auto",
             "margin_right": "auto",
             "display": "block",
@@ -1786,14 +1853,13 @@ def generate_gallery(rendered_map: dict, theme_map: dict,
             theme = theme_map[tid]
             accent = theme.get("colors", {}).get("accent", "#333")
             active = " active" if btn_index == 0 else ""
-            is_recommended = " recommended" if tid in recommended else ""
+            is_featured = " featured" if btn_index == 0 or tid == MINIMAL_FLEX_THEME_ID or tid in recommended else ""
             name = theme.get("name", tid)
-            rec_label = '<span class="rec-badge">推荐</span>' if tid in recommended else ""
             buttons_html += (
-                f'<button class="theme-btn{active}{is_recommended}" data-theme="{tid}" '
+                f'<button class="theme-btn{active}{is_featured}" data-theme="{tid}" '
                 f"onclick=\"switchTheme('{tid}')\">"
                 f'<span class="theme-dot" style="background:{accent}"></span>'
-                f'{name}{rec_label}</button>'
+                f"{name}</button>"
             )
             btn_index += 1
         buttons_html += '</div></section>\n'
@@ -1915,6 +1981,8 @@ def main():
                         help=f"极简可调主题的标题对齐（仅 {MINIMAL_FLEX_THEME_ID} 可用）")
     parser.add_argument("--divider-style", choices=MINIMAL_FLEX_DIVIDERS,
                         help=f"极简可调主题的分隔线样式（仅 {MINIMAL_FLEX_THEME_ID} 可用）")
+    parser.add_argument("--strong-style", choices=MINIMAL_FLEX_STRONG_STYLES,
+                        help=f"极简可调主题的加粗强调方式（仅 {MINIMAL_FLEX_THEME_ID} 可用）")
     parser.add_argument("--vault-root", default=str(VAULT_ROOT), help="Obsidian Vault 根目录")
     parser.add_argument("--output", "-o", default=None, help="输出目录（默认: 当前 Markdown 同级的 wechat output/）")
     parser.add_argument("--no-open", action="store_true", help="不自动打开浏览器")
@@ -1955,6 +2023,7 @@ def main():
             args.accent,
             args.heading_align,
             args.divider_style,
+            args.strong_style,
             DEFAULT_FONT_SIZE,
         )
     except ValueError as exc:
@@ -2050,8 +2119,10 @@ def main():
         open_target = gallery_url or gallery_path.resolve().as_uri()
         print(f"\n输出目录: {output_dir.resolve()}")
         print(f"画廊文件: {gallery_path.resolve()}")
+        print(f"画廊文件URI: {gallery_path.resolve().as_uri()}")
         if gallery_url:
             print(f"画廊页面: {gallery_url}")
+            print("本地服务地址已经主动测试通过，可直接打开。")
         else:
             print(f"画廊页面: {gallery_path.resolve().as_uri()}")
 

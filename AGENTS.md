@@ -21,6 +21,9 @@ This repo is a script-first WeChat formatting toolkit. Claude and Codex can both
 5. Reuse the last gallery selection from the system temp directory:
    `selected-style.json` first, `selected-theme.txt` second.
 6. Tell the user that the gallery is a preview and picker. After copying to WeChat, they can still fine-tune text manually.
+7. When gallery rendering finishes, give the user both addresses:
+   the local `http://127.0.0.1:.../gallery.html` URL and the generated local file URI such as `file:///D:/.../wechat%20output/gallery.html`.
+8. Prefer proactively testing the local `127.0.0.1` gallery URL before reporting success. Even when that URL works, still remind the user that the local file in `wechat output/` also exists and is usable.
 
 ## Theme Rules
 
@@ -34,6 +37,7 @@ This repo is a script-first WeChat formatting toolkit. Claude and Codex can both
 - Do not create extra nested output folders unless the user explicitly asks for that structure.
 - The normal result should stay inside the Markdown file's sibling `wechat output/` folder.
 - On Windows, prefer reporting the real local file path or the local `http://127.0.0.1:...` gallery URL. Do not hand back `/tmp/...` paths as if they were directly openable.
+- Good UX matters here: report the tested URL, report the file URI, and make clear that both are valid ways to open the result.
 
 ## Publishing Rules
 
