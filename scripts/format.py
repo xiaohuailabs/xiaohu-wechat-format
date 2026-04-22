@@ -795,46 +795,58 @@ def inject_dark_mode_attrs(html: str, dark_mode: dict, style_map: dict) -> str:
 
 
 def _basic_syntax_highlight(code_html: str) -> str:
-    """增强语法高亮：注释、字符串、关键字、数字、装饰器、类型"""
+    """增强语法高亮：注释、字符串、关键字、数字、装饰器、类型
+
+    使用 token 占位符隔离各阶段输出，防止先生成的 <span> 标签
+    被后续正则（如字符串匹配）再次破坏。
+    """
+    _tokens: list[str] = []
+
+    def _tok(color: str, text: str) -> str:
+        """生成占位符，将真正的 <span> 存入 _tokens 列表"""
+        idx = len(_tokens)
+        _tokens.append(f'<span style="color:{color}">{text}</span>')
+        return f"\x00HL{idx}\x00"
+
     # 装饰器 @xxx
     code_html = re.sub(
         r'(@\w+)',
-        r'<span style="color:#c586c0">\1</span>',
+        lambda m: _tok("#c586c0", m.group(1)),
         code_html
     )
     # 单行注释 // ... 和 # ...（排除 URL 中的 ://）
     code_html = re.sub(
         r'(?<!:)(//.*?)(<br>|$)',
-        r'<span style="color:#6a9955">\1</span>\2',
+        lambda m: _tok("#6a9955", m.group(1)) + m.group(2),
         code_html
     )
     code_html = re.sub(
         r'(#[^{].*?)(<br>|$)',
-        r'<span style="color:#6a9955">\1</span>\2',
+        lambda m: _tok("#6a9955", m.group(1)) + m.group(2),
         code_html
     )
     # f-string: f"..." / f'...'（Python）
     code_html = re.sub(
         r'(f&quot;.*?&quot;|f&#x27;.*?&#x27;|f"[^"<]*?"|f\'[^\'<]*?\')',
-        r'<span style="color:#ce9178">\1</span>',
+        lambda m: _tok("#ce9178", m.group(1)),
         code_html
     )
     # 模板字符串 `...`（JS）
     code_html = re.sub(
         r'(`[^`<]*?`)',
-        r'<span style="color:#ce9178">\1</span>',
+        lambda m: _tok("#ce9178", m.group(1)),
         code_html
     )
     # 字符串（双引号和单引号，HTML 转义形式）
     code_html = re.sub(
         r'(&quot;.*?&quot;|&#x27;.*?&#x27;|"[^"<]*?"|\'[^\'<]*?\')',
-        r'<span style="color:#ce9178">\1</span>',
+        lambda m: _tok("#ce9178", m.group(1)),
         code_html
     )
     # 数字（整数和浮点数）
     code_html = re.sub(
-        r'(?<![a-zA-Z0-9_])(\d+\.?\d*)',
-        r'<span style="color:#b5cea8">\1</span>',
+        r'(?<![a-zA-Z0-9_\x00])(\d+\.?\d*)',
+        lambda m: _tok("#b5cea8", m.group(1)),
         code_html
     )
     # 常见关键字
@@ -851,8 +863,8 @@ def _basic_syntax_highlight(code_html: str) -> str:
     ]
     for kw in keywords:
         code_html = re.sub(
-            rf'(?<![a-zA-Z0-9_])({kw})(?![a-zA-Z0-9_])',
-            rf'<span style="color:#569cd6">\1</span>',
+            rf'(?<![a-zA-Z0-9_\x00])({kw})(?![a-zA-Z0-9_\x00])',
+            lambda m, c="#569cd6": _tok(c, m.group(1)),
             code_html
         )
     # 内置类型/函数
@@ -864,10 +876,13 @@ def _basic_syntax_highlight(code_html: str) -> str:
     ]
     for bt in builtins:
         code_html = re.sub(
-            rf'(?<![a-zA-Z0-9_])({bt})(?![a-zA-Z0-9_])',
-            rf'<span style="color:#4ec9b0">\1</span>',
+            rf'(?<![a-zA-Z0-9_\x00])({bt})(?![a-zA-Z0-9_\x00])',
+            lambda m, c="#4ec9b0": _tok(c, m.group(1)),
             code_html
         )
+    # 还原所有 token 为真正的 <span> 标签
+    for i, span in enumerate(_tokens):
+        code_html = code_html.replace(f"\x00HL{i}\x00", span)
     return code_html
 
 
@@ -1205,14 +1220,19 @@ def inject_inline_styles(html: str, theme: dict, skip_wrapper: bool = False) -> 
         pre_content = pre_content.replace("\n", "<br>")
         # 语法高亮：仅对有语言标记的代码块启用（避免破坏 URL 等纯文本内容）
         has_language = bool(re.search(r'class="language-', pre_content))
-        if has_language:
-            pre_content = _basic_syntax_highlight(pre_content)
-        # 替换内部 code 标签
+        # 先剥离 <code> 标签，避免其属性被语法高亮正则破坏
+        pre_content = re.sub(r"<code[^>]*>", "", pre_content)
+        pre_content = re.sub(r"</code>", "", pre_content)
+        # 清理缩进代码块中残留的语言标识符（fenced_code 解析失败时会出现）
         pre_content = re.sub(
-            r"<code[^>]*>",
-            f'<code style="{pre_code_style}">',
+            r"^(java|python|bash|shell|javascript|json|xml|html|css|kotlin|go|rust|c|cpp|typescript|swift|ruby|php|sql|yaml|toml|groovy|scala|dart|text|plain|sh|zsh)(&nbsp;)*(<br>|$)",
+            r"\3",
             pre_content,
         )
+        if has_language:
+            pre_content = _basic_syntax_highlight(pre_content)
+        # 用带样式的 <code> 重新包裹
+        pre_content = f'<code style="{pre_code_style}">{pre_content}</code>'
         # Mac 风格工具栏（红黄绿三圆点）
         dot_base = "display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:8px"
         mac_header = (
