@@ -5,10 +5,10 @@
     "primary": "#333333",
     "accent": "#D71A1B",
     "background": "#ffffff",
-    "blockquote_bg": "#fff8f8",
+    "blockquote_bg": "rgba(215,26,27,0.06)",
     "code_bg": "#fafafa",
     "hr_color": "#D71A1B",
-    "footnote_bg": "#ffffff"
+    "footnote_bg": "rgba(215,26,27,0.04)"
   },
   "styles": {
     "wrapper": {
@@ -16,7 +16,7 @@
       "padding": "16px"
     },
     "h1": {
-      "font_size": "29px",
+      "font_size": "26px",
       "font_weight": "700",
       "color": "#2d2d2d",
       "line_height": "1.32",
@@ -49,18 +49,18 @@
       "margin_bottom": "14px"
     },
     "p": {
-      "font_size": "15px",
+      "font_size": "16px",
       "color": "#333333",
       "line_height": "1.8",
       "margin_top": "0",
       "margin_bottom": "20px",
       "letter_spacing": "0.5px",
-      "text_align": "left"
+      "text_align": "justify"
     },
     "blockquote": {
       "border_left": "4px solid #D71A1B",
       "border_right": "1px solid #f0e0e0",
-      "background": "linear-gradient(180deg, #fff8f8 0%, #fffdfd 100%)",
+      "background": "rgba(215,26,27,0.06)",
       "padding": "16px 20px",
       "margin_top": "24px",
       "margin_bottom": "24px",
@@ -116,7 +116,7 @@
       "margin_right": "auto"
     },
     "code": {
-      "background": "#fff5f5",
+      "background": "rgba(215,26,27,0.06)",
       "padding": "3px 6px",
       "border_radius": "4px",
       "font_size": "13px",
@@ -170,7 +170,7 @@
       "overflow": "hidden"
     },
     "th": {
-      "background": "#fef7f7",
+      "background": "rgba(215,26,27,0.04)",
       "padding": "12px 16px",
       "border": "1px solid #f0e0e0",
       "text_align": "left",
@@ -203,7 +203,7 @@
       "margin_top": "4px"
     },
     "list_item_text": {
-      "font_size": "15px",
+      "font_size": "16px",
       "color": "#333333",
       "line_height": "1.8",
       "letter_spacing": "0.5px"
@@ -229,7 +229,7 @@
       "margin_bottom": "12px"
     },
     "footnote_item": {
-      "font_size": "12px",
+      "font_size": "13px",
       "color": "#999999",
       "margin_bottom": "6px",
       "line_height": "1.6",

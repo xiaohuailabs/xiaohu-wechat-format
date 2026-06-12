@@ -1,0 +1,256 @@
+{
+  "name": "工业警戒",
+  "description": "工业警示标语感：深灰 #1F1F1F 底 + 警示橙 #FF6B00 + Inter Bold。H1 超大 Black 粗体+橙底+斜纹警戒条感、H2 橙字+左黄黑斜条、p 浅灰、blockquote 橙框警示牌感、hr 黄黑斜纹条。建筑工地/工厂警戒感（vs brutalism 纯黑派，vs terminal 荧光派）。适合硬核测评/行业警示/问题揭露/批评文。",
+  "source": "https://github.com/GordenSun/WX",
+  "colors": {
+    "primary": "#E8E8E8",
+    "accent": "#FF6B00",
+    "background": "#1F1F1F",
+    "blockquote_bg": "rgba(255,107,0,0.10)",
+    "code_bg": "rgba(255,107,0,0.15)",
+    "hr_color": "#FF6B00",
+    "footnote_bg": "rgba(255,107,0,0.04)"
+  },
+  "styles": {
+    "wrapper": {
+      "background_color": "#1F1F1F",
+      "padding": "24px 16px",
+      "font_family": "'Inter','Helvetica Neue','Arial','PingFang SC',sans-serif"
+    },
+    "h1": {
+      "font_size": "32px",
+      "font_weight": "900",
+      "color": "#1F1F1F",
+      "line_height": "1.15",
+      "margin_top": "36px",
+      "margin_bottom": "24px",
+      "padding": "16px 20px",
+      "background": "#FF6B00",
+      "letter_spacing": "-0.01em",
+      "text_transform": "uppercase",
+      "border_left": "8px solid #FFD700",
+      "border_right": "8px solid #FFD700"
+    },
+    "h2": {
+      "font_size": "20px",
+      "font_weight": "900",
+      "color": "#FF6B00",
+      "line_height": "1.3",
+      "margin_top": "32px",
+      "margin_bottom": "16px",
+      "padding": "6px 0 6px 18px",
+      "border_left": "6px solid #FF6B00",
+      "letter_spacing": "2px",
+      "text_transform": "uppercase",
+      "background": "linear-gradient(135deg,#FFD700 0 12px,transparent 12px)"
+    },
+    "h3": {
+      "font_size": "17px",
+      "font_weight": "800",
+      "color": "#FFD700",
+      "line_height": "1.4",
+      "margin_top": "26px",
+      "margin_bottom": "12px",
+      "letter_spacing": "2px",
+      "text_transform": "uppercase"
+    },
+    "h4": {
+      "font_size": "14px",
+      "font_weight": "700",
+      "color": "#1F1F1F",
+      "background": "#FFD700",
+      "padding": "3px 10px",
+      "display": "inline-block",
+      "line_height": "1.4",
+      "margin_top": "22px",
+      "margin_bottom": "10px",
+      "letter_spacing": "2.5px",
+      "text_transform": "uppercase"
+    },
+    "h5": {
+      "font_size": "14px",
+      "font_weight": "700",
+      "color": "#E8E8E8",
+      "margin_top": "18px",
+      "margin_bottom": "8px",
+      "line_height": "1.4"
+    },
+    "h6": {
+      "font_size": "12px",
+      "font_weight": "700",
+      "color": "#999999",
+      "margin_top": "16px",
+      "margin_bottom": "6px",
+      "line_height": "1.4",
+      "letter_spacing": "2px",
+      "text_transform": "uppercase"
+    },
+    "p": {
+      "font_size": "16px",
+      "color": "#E8E8E8",
+      "line_height": "1.75",
+      "margin_top": "0",
+      "margin_bottom": "16px",
+      "letter_spacing": "0.3px"
+    },
+    "blockquote": {
+      "background": "rgba(255,107,0,0.10)",
+      "border": "2px solid #FF6B00",
+      "padding": "14px 18px",
+      "border_radius": "0",
+      "margin_top": "22px",
+      "margin_bottom": "22px",
+      "font_size": "14px",
+      "color": "#FF6B00",
+      "line_height": "1.7",
+      "font_weight": "600"
+    },
+    "blockquote_p": {
+      "font_size": "14px",
+      "color": "#FF6B00",
+      "line_height": "1.7",
+      "margin_bottom": "0",
+      "background": "transparent",
+      "font_weight": "600"
+    },
+    "strong": {
+      "font_weight": "900",
+      "color": "#FFD700",
+      "background": "#1F1F1F",
+      "padding": "0 3px"
+    },
+    "em": {
+      "font_style": "italic",
+      "color": "#FF6B00"
+    },
+    "a": {
+      "color": "#FFD700",
+      "text_decoration": "underline",
+      "text_decoration_thickness": "2px",
+      "text_underline_offset": "3px"
+    },
+    "img": {
+      "max_width": "100%",
+      "display": "block",
+      "margin_top": "18px",
+      "margin_bottom": "8px",
+      "border": "4px solid #FF6B00"
+    },
+    "img_wrapper": {
+      "background": "transparent",
+      "padding": "0",
+      "margin_top": "18px",
+      "margin_bottom": "18px"
+    },
+    "hr": {
+      "margin_top": "30px",
+      "margin_bottom": "30px",
+      "height": "10px",
+      "border": "none",
+      "background": "repeating-linear-gradient(-45deg,#FFD700 0 12px,#1F1F1F 12px 24px)"
+    },
+    "code": {
+      "background": "rgba(255,107,0,0.15)",
+      "padding": "1px 6px",
+      "border_radius": "0",
+      "font_size": "92%",
+      "color": "#FFD700",
+      "font_family": "'JetBrains Mono','SF Mono',Menlo,monospace",
+      "border": "1px solid #FF6B00",
+      "font_weight": "600"
+    },
+    "code_block": {
+      "background": "#141414",
+      "border": "2px solid #FF6B00",
+      "border_radius": "0",
+      "margin_top": "22px",
+      "margin_bottom": "22px",
+      "overflow": "hidden"
+    },
+    "code_header": {
+      "display": "flex",
+      "align_items": "center",
+      "height": "30px",
+      "padding": "0 14px",
+      "background": "#FF6B00",
+      "color": "#1F1F1F",
+      "font_size": "11px",
+      "font_weight": "900",
+      "letter_spacing": "2px",
+      "text_transform": "uppercase"
+    },
+    "pre": {
+      "background": "#141414",
+      "color": "#E8E8E8",
+      "padding": "14px 16px",
+      "overflow_x": "auto",
+      "margin_top": "0",
+      "margin_bottom": "0",
+      "font_size": "13px",
+      "line_height": "1.65",
+      "white_space": "pre-wrap"
+    },
+    "pre_code": {
+      "background": "none",
+      "padding": "0",
+      "color": "#E8E8E8",
+      "font_size": "13px",
+      "font_family": "'JetBrains Mono','SF Mono',Menlo,monospace"
+    },
+    "table": {
+      "width": "100%",
+      "border_collapse": "collapse",
+      "margin_top": "20px",
+      "margin_bottom": "20px",
+      "font_size": "13px",
+      "border": "2px solid #FF6B00"
+    },
+    "th": {
+      "padding": "10px 12px",
+      "text_align": "left",
+      "font_weight": "900",
+      "color": "#1F1F1F",
+      "background": "#FF6B00",
+      "letter_spacing": "1.5px",
+      "text_transform": "uppercase",
+      "font_size": "11px"
+    },
+    "td": {
+      "padding": "8px 12px",
+      "border": "1px solid rgba(255,107,0,0.3)",
+      "color": "#E8E8E8"
+    },
+    "list_item_bullet": {
+      "color": "#1F1F1F",
+      "background": "#FFD700",
+      "margin_right": "10px",
+      "font_weight": "900",
+      "padding": "0 5px"
+    },
+    "ol_item_bullet": {
+      "color": "#FFD700",
+      "background": "#FF6B00",
+      "font_weight": "900",
+      "margin_right": "10px",
+      "padding": "0 6px"
+    },
+    "list_item_text": {
+      "font_size": "16px",
+      "color": "#E8E8E8",
+      "line_height": "1.75",
+      "letter_spacing": "0.3px"
+    },
+    "list_wrapper": {
+      "margin_top": "12px",
+      "margin_bottom": "12px"
+    },
+    "list_item_row": {
+      "display": "flex",
+      "margin_bottom": "6px",
+      "align_items": "flex-start"
+    }
+  },
+  "lint": {
+    "display_type": true
+  }
+}

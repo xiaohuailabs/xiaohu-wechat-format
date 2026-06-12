@@ -89,6 +89,10 @@ body {
     position: absolute;
     left: -9999px;
     top: -9999px;
+    width: 375px;          /* 限宽，避免子 section 撑到视口右边漏出色块 */
+    overflow: hidden;
+    visibility: hidden;    /* 复制时 JS 会临时恢复 visibility */
+    pointer-events: none;
 }
 /* ── Font Size Selector ── */
 .font-size-selector {
@@ -223,6 +227,7 @@ function copyToWechat() {
     source.style.top = '0';
     source.style.opacity = '0.01';
     source.style.width = '375px';
+    source.style.visibility = 'visible';
 
     const sel = window.getSelection();
     sel.removeAllRanges();
@@ -261,6 +266,7 @@ function copyToWechat() {
     source.style.top = '-9999px';
     source.style.opacity = '';
     source.style.width = '';
+    source.style.visibility = 'hidden';
 
     sel.removeAllRanges();
 }

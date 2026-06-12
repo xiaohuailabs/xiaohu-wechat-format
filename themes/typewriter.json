@@ -1,0 +1,245 @@
+{
+  "name": "复古打字机",
+  "description": "羊皮纸底 #F5E8C7 + 墨棕 #2C2416 + Courier 等宽 + 双横线 H1 + 稿纸行距。打字机怀旧手稿感，全局等宽字体、p 行距 1.9、H1 上下双细线夹（打字机标题），hr 短破折号。vs terminal 黑底绿字未来感，本主题是羊皮纸怀旧派。适合旧体散文/手账/信件体/回忆录。",
+  "source": "https://github.com/GordenSun/WX",
+  "colors": {
+    "primary": "#2C2416",
+    "accent": "#8B4513",
+    "background": "#F5E8C7",
+    "blockquote_bg": "#EDE0B8",
+    "code_bg": "#E8DBA8",
+    "hr_color": "#8B4513",
+    "footnote_bg": "#EDE0B8"
+  },
+  "styles": {
+    "wrapper": {
+      "background_color": "#F5E8C7",
+      "padding": "28px 20px",
+      "font_family": "'Courier New','Courier','SF Mono','PingFang SC',monospace"
+    },
+    "h1": {
+      "font_size": "24px",
+      "font_weight": "700",
+      "color": "#2C2416",
+      "text_align": "center",
+      "line_height": "1.4",
+      "margin_top": "38px",
+      "margin_bottom": "26px",
+      "padding": "14px 0",
+      "border_top": "2px solid #2C2416",
+      "border_bottom": "2px solid #2C2416",
+      "letter_spacing": "4px",
+      "text_transform": "uppercase"
+    },
+    "h2": {
+      "font_size": "18px",
+      "font_weight": "700",
+      "color": "#2C2416",
+      "line_height": "1.45",
+      "margin_top": "30px",
+      "margin_bottom": "14px",
+      "padding_bottom": "6px",
+      "border_bottom": "1px dashed #2C2416",
+      "letter_spacing": "2px"
+    },
+    "h3": {
+      "font_size": "16px",
+      "font_weight": "700",
+      "color": "#8B4513",
+      "line_height": "1.5",
+      "margin_top": "24px",
+      "margin_bottom": "12px",
+      "letter_spacing": "1.5px",
+      "text_transform": "uppercase"
+    },
+    "h4": {
+      "font_size": "14px",
+      "font_weight": "700",
+      "color": "#2C2416",
+      "line_height": "1.55",
+      "margin_top": "20px",
+      "margin_bottom": "10px",
+      "font_style": "italic"
+    },
+    "h5": {
+      "font_size": "13px",
+      "font_weight": "600",
+      "color": "#5A4530",
+      "margin_top": "18px",
+      "margin_bottom": "8px",
+      "line_height": "1.55"
+    },
+    "h6": {
+      "font_size": "12px",
+      "font_weight": "600",
+      "color": "#8A7659",
+      "margin_top": "16px",
+      "margin_bottom": "6px",
+      "line_height": "1.55",
+      "letter_spacing": "1.5px"
+    },
+    "p": {
+      "font_size": "15px",
+      "color": "#2C2416",
+      "line_height": "1.9",
+      "margin_top": "0",
+      "margin_bottom": "18px",
+      "letter_spacing": "0.3px",
+      "text_align": "justify"
+    },
+    "blockquote": {
+      "background": "#EDE0B8",
+      "border": "1px dashed #2C2416",
+      "padding": "14px 20px",
+      "border_radius": "0",
+      "margin_top": "24px",
+      "margin_bottom": "24px",
+      "font_size": "13px",
+      "color": "#5A4530",
+      "line_height": "1.85",
+      "font_style": "italic"
+    },
+    "blockquote_p": {
+      "font_size": "13px",
+      "color": "#5A4530",
+      "line_height": "1.85",
+      "margin_bottom": "0",
+      "background": "transparent",
+      "font_style": "italic"
+    },
+    "strong": {
+      "font_weight": "700",
+      "color": "#2C2416",
+      "text_decoration": "underline"
+    },
+    "em": {
+      "font_style": "italic",
+      "color": "#8B4513"
+    },
+    "a": {
+      "color": "#8B4513",
+      "text_decoration": "underline",
+      "text_decoration_style": "double"
+    },
+    "img": {
+      "max_width": "100%",
+      "display": "block",
+      "margin_top": "20px",
+      "margin_bottom": "8px",
+      "border": "2px solid #2C2416",
+      "padding": "6px",
+      "background": "#FFFBEA"
+    },
+    "img_wrapper": {
+      "background": "transparent",
+      "padding": "0",
+      "margin_top": "20px",
+      "margin_bottom": "20px"
+    },
+    "hr": {
+      "margin_top": "32px",
+      "margin_bottom": "32px",
+      "height": "0",
+      "border": "none",
+      "border_top": "2px dashed #2C2416",
+      "width": "80%",
+      "margin_left": "auto",
+      "margin_right": "auto"
+    },
+    "code": {
+      "background": "#E8DBA8",
+      "padding": "1px 6px",
+      "border_radius": "0",
+      "font_size": "92%",
+      "color": "#2C2416",
+      "font_family": "'Courier New','Courier',monospace",
+      "border": "1px solid #8B4513"
+    },
+    "code_block": {
+      "background": "#EDE0B8",
+      "border": "2px solid #2C2416",
+      "border_radius": "0",
+      "margin_top": "22px",
+      "margin_bottom": "22px",
+      "overflow": "hidden"
+    },
+    "code_header": {
+      "display": "flex",
+      "align_items": "center",
+      "height": "28px",
+      "padding": "0 12px",
+      "background": "#2C2416",
+      "color": "#F5E8C7",
+      "font_size": "11px",
+      "letter_spacing": "2px",
+      "text_transform": "uppercase",
+      "font_family": "'Courier New',monospace"
+    },
+    "pre": {
+      "background": "#EDE0B8",
+      "color": "#2C2416",
+      "padding": "12px 14px",
+      "overflow_x": "auto",
+      "margin_top": "0",
+      "margin_bottom": "0",
+      "font_size": "12px",
+      "line_height": "1.75",
+      "white_space": "pre-wrap"
+    },
+    "pre_code": {
+      "background": "none",
+      "padding": "0",
+      "color": "#2C2416",
+      "font_size": "12px",
+      "font_family": "'Courier New','Courier',monospace"
+    },
+    "table": {
+      "width": "100%",
+      "border_collapse": "collapse",
+      "margin_top": "20px",
+      "margin_bottom": "20px",
+      "font_size": "13px",
+      "border": "2px solid #2C2416"
+    },
+    "th": {
+      "padding": "10px 12px",
+      "text_align": "left",
+      "font_weight": "700",
+      "color": "#F5E8C7",
+      "background": "#2C2416",
+      "letter_spacing": "1.5px",
+      "text_transform": "uppercase",
+      "font_size": "11px"
+    },
+    "td": {
+      "padding": "8px 12px",
+      "border": "1px dashed #8B4513",
+      "color": "#2C2416"
+    },
+    "list_item_bullet": {
+      "color": "#8B4513",
+      "margin_right": "10px",
+      "font_weight": "700"
+    },
+    "ol_item_bullet": {
+      "color": "#8B4513",
+      "font_weight": "700",
+      "margin_right": "10px"
+    },
+    "list_item_text": {
+      "font_size": "14px",
+      "color": "#2C2416",
+      "line_height": "1.9",
+      "letter_spacing": "0.3px"
+    },
+    "list_wrapper": {
+      "margin_top": "14px",
+      "margin_bottom": "14px"
+    },
+    "list_item_row": {
+      "display": "flex",
+      "margin_bottom": "6px",
+      "align_items": "flex-start"
+    }
+  }
+}

@@ -1,0 +1,299 @@
+{
+  "name": "赛博霓虹",
+  "description": "深色底+霓虹青/品红发光效果+等宽字体感，适合前沿科技、AI话题",
+  "colors": {
+    "primary": "#e0e0e0",
+    "accent": "#00e5ff",
+    "background": "#0d0d0d",
+    "blockquote_bg": "rgba(0,229,255,0.06)",
+    "code_bg": "#1a1a2e",
+    "hr_color": "#00e5ff",
+    "footnote_bg": "rgba(0,229,255,0.04)"
+  },
+  "layout": "card",
+  "card": {
+    "bg": "#0d0d0d",
+    "card_bg": "#1a1a1a",
+    "card_texture": "linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px)",
+    "card_texture_size": "30px 30px",
+    "card_border": "1px solid rgba(0,229,255,0.15)",
+    "card_shadow": "0 0 20px rgba(0,229,255,0.15), 0 8px 32px rgba(0,0,0,0.4)",
+    "card_radius": "12px"
+  },
+  "styles": {
+    "wrapper": {
+      "background_color": "#0d0d0d",
+      "padding": "16px"
+    },
+    "h1": {
+      "font_size": "24px",
+      "font_weight": "bold",
+      "color": "#ffffff",
+      "text_align": "center",
+      "padding": "16px 24px",
+      "margin_top": "0",
+      "margin_bottom": "12px",
+      "line_height": "1.3",
+      "text_shadow": "0 0 20px rgba(0,229,255,0.5)"
+    },
+    "h2": {
+      "font_size": "20px",
+      "font_weight": "bold",
+      "color": "#00e5ff",
+      "border_bottom": "1px solid rgba(0,229,255,0.3)",
+      "padding": "0 0 10px 0",
+      "margin_top": "32px",
+      "margin_bottom": "16px",
+      "line_height": "1.3",
+      "text_shadow": "0 0 12px rgba(0,229,255,0.4)"
+    },
+    "h3": {
+      "font_size": "18px",
+      "font_weight": "bold",
+      "color": "#e040fb",
+      "padding": "0",
+      "margin_top": "28px",
+      "margin_bottom": "12px",
+      "line_height": "1.3",
+      "text_shadow": "0 0 8px rgba(224,64,251,0.3)"
+    },
+    "p": {
+      "font_size": "16px",
+      "color": "#c8c8c8",
+      "line_height": "1.8",
+      "margin_top": "0",
+      "margin_bottom": "20px",
+      "letter_spacing": "0.3px",
+      "text_align": "justify"
+    },
+    "blockquote": {
+      "border_left": "4px solid #00e5ff",
+      "background": "rgba(0,229,255,0.06)",
+      "padding": "16px 20px",
+      "margin_top": "20px",
+      "margin_bottom": "20px",
+      "border_radius": "0 8px 8px 0",
+      "font_size": "15px",
+      "color": "#c8c8c8",
+      "line_height": "1.8",
+      "font_style": "italic",
+      "box_shadow": "inset 0 0 20px rgba(0,229,255,0.05)"
+    },
+    "blockquote_p": {
+      "font_size": "15px",
+      "color": "#a0a0a0",
+      "line_height": "1.8",
+      "margin_bottom": "0",
+      "font_style": "normal",
+      "background": "transparent"
+    },
+    "strong": {
+      "font_weight": "bold",
+      "color": "#00e5ff"
+    },
+    "em": {
+      "font_style": "italic",
+      "color": "#e040fb"
+    },
+    "a": {
+      "color": "#00e5ff",
+      "text_decoration": "none"
+    },
+    "img": {
+      "max_width": "100%",
+      "border_radius": "8px",
+      "display": "block",
+      "box_shadow": "0 0 16px rgba(0,229,255,0.2)"
+    },
+    "img_wrapper": {
+      "background": "#1a1a1a",
+      "border_radius": "10px",
+      "padding": "4px",
+      "margin_top": "10px",
+      "margin_bottom": "10px"
+    },
+    "hr": {
+      "margin_top": "32px",
+      "margin_bottom": "32px",
+      "height": "1px",
+      "background": "linear-gradient(90deg, transparent, rgba(0,229,255,0.4), rgba(224,64,251,0.4), transparent)",
+      "border": "none"
+    },
+    "code": {
+      "background": "rgba(0,229,255,0.1)",
+      "padding": "3px 6px",
+      "border_radius": "4px",
+      "font_size": "90%",
+      "color": "#00e5ff",
+      "font_family": "SF Mono, Menlo, Monaco, Consolas, monospace"
+    },
+    "code_block": {
+      "background": "#1a1a2e",
+      "border_radius": "8px",
+      "margin_top": "24px",
+      "margin_bottom": "24px",
+      "overflow": "hidden",
+      "border_top": "2px solid #00e5ff",
+      "box_shadow": "0 0 12px rgba(0,229,255,0.1)"
+    },
+    "code_header": {
+      "display": "flex",
+      "align_items": "center",
+      "height": "36px",
+      "padding": "0 12px",
+      "background": "#16162a"
+    },
+    "pre": {
+      "background": "#1a1a2e",
+      "color": "#c8c8c8",
+      "padding": "20px",
+      "border_radius": "0",
+      "overflow_x": "auto",
+      "margin_top": "0",
+      "margin_bottom": "0",
+      "font_size": "14px",
+      "line_height": "1.5",
+      "white_space": "pre-wrap",
+      "word_wrap": "break-word",
+      "word_break": "break-all"
+    },
+    "pre_code": {
+      "background": "none",
+      "padding": "0",
+      "color": "#c8c8c8",
+      "font_size": "14px",
+      "font_family": "SF Mono, Menlo, Monaco, Consolas, monospace"
+    },
+    "table": {
+      "width": "100%",
+      "border_collapse": "separate",
+      "margin_top": "16px",
+      "margin_bottom": "16px",
+      "font_size": "15px",
+      "border_spacing": "0",
+      "border_radius": "8px",
+      "overflow": "hidden"
+    },
+    "th": {
+      "background": "rgba(0,229,255,0.08)",
+      "padding": "10px 12px",
+      "border": "1px solid rgba(0,229,255,0.15)",
+      "text_align": "left",
+      "font_weight": "bold",
+      "color": "#00e5ff"
+    },
+    "td": {
+      "padding": "10px 12px",
+      "border": "1px solid rgba(255,255,255,0.08)",
+      "color": "#c8c8c8"
+    },
+    "list_item_bullet": {
+      "color": "#00e5ff",
+      "margin_right": "8px",
+      "font_weight": "bold"
+    },
+    "ol_item_bullet": {
+      "display": "inline-flex",
+      "align_items": "center",
+      "justify_content": "center",
+      "width": "22px",
+      "height": "22px",
+      "min_width": "22px",
+      "background": "rgba(0,229,255,0.15)",
+      "color": "#00e5ff",
+      "border_radius": "50%",
+      "font_size": "13px",
+      "font_weight": "bold",
+      "margin_right": "10px",
+      "margin_top": "4px",
+      "border": "1px solid rgba(0,229,255,0.3)"
+    },
+    "list_item_text": {
+      "font_size": "16px",
+      "color": "#c8c8c8",
+      "line_height": "1.8",
+      "letter_spacing": "0.3px"
+    },
+    "list_wrapper": {
+      "margin_top": "15px",
+      "margin_bottom": "15px"
+    },
+    "list_item_row": {
+      "display": "flex",
+      "margin_bottom": "8px",
+      "align_items": "flex-start"
+    },
+    "footnote_section": {
+      "margin_top": "32px",
+      "padding_top": "16px",
+      "border_top": "1px solid rgba(0,229,255,0.2)"
+    },
+    "footnote_title": {
+      "font_size": "14px",
+      "font_weight": "bold",
+      "color": "#666666",
+      "margin_bottom": "12px"
+    },
+    "footnote_item": {
+      "font_size": "13px",
+      "color": "#666666",
+      "margin_bottom": "6px",
+      "line_height": "1.6",
+      "word_break": "break-all"
+    },
+    "footnote_sup": {
+      "font_size": "12px",
+      "color": "#00e5ff",
+      "vertical_align": "super",
+      "margin_left": "2px"
+    },
+    "callout": {
+      "background": "rgba(224,64,251,0.08)",
+      "border": "1px solid rgba(224,64,251,0.25)",
+      "padding": "16px",
+      "margin_top": "16px",
+      "margin_bottom": "16px",
+      "border_radius": "8px",
+      "box_shadow": "0 0 12px rgba(224,64,251,0.1)"
+    },
+    "callout_title": {
+      "font_weight": "bold",
+      "color": "#e040fb",
+      "margin_bottom": "8px",
+      "font_size": "15px"
+    },
+    "callout_content": {
+      "font_size": "14px",
+      "color": "#c8c8c8",
+      "line_height": "1.8",
+      "letter_spacing": "0.3px"
+    },
+    "h4": {
+      "font_size": "17px",
+      "font_weight": "bold",
+      "color": "#e040fb",
+      "padding": "0",
+      "margin_top": "24px",
+      "margin_bottom": "8px",
+      "line_height": "1.3"
+    },
+    "h5": {
+      "font_size": "16px",
+      "font_weight": "bold",
+      "color": "#888888",
+      "padding": "0",
+      "margin_top": "20px",
+      "margin_bottom": "6px",
+      "line_height": "1.3"
+    },
+    "h6": {
+      "font_size": "15px",
+      "font_weight": "bold",
+      "color": "#666666",
+      "padding": "0",
+      "margin_top": "16px",
+      "margin_bottom": "6px",
+      "line_height": "1.3"
+    }
+  }
+}

@@ -1,0 +1,243 @@
+{
+  "name": "优雅",
+  "description": "金色强调，米色引用背景，适合深度长文、观点文",
+  "colors": {
+    "primary": "#333333",
+    "accent": "#c9a962",
+    "background": "#ffffff",
+    "blockquote_bg": "rgba(201,169,98,0.06)",
+    "code_bg": "#f8f6f1",
+    "hr_color": "#e8e3d8",
+    "footnote_bg": "rgba(201,169,98,0.04)"
+  },
+  "styles": {
+    "h1": {
+      "font_size": "22px",
+      "font_weight": "bold",
+      "color": "#1a1a1a",
+      "text_align": "center",
+      "margin_bottom": "24px",
+      "line_height": "1.4"
+    },
+    "h2": {
+      "font_size": "20px",
+      "font_weight": "bold",
+      "color": "#1a1a1a",
+      "border_bottom": "1px solid #e8e3d8",
+      "padding_bottom": "8px",
+      "margin_top": "32px",
+      "margin_bottom": "16px",
+      "line_height": "1.4"
+    },
+    "h3": {
+      "font_size": "16px",
+      "font_weight": "bold",
+      "color": "#333333",
+      "margin_top": "24px",
+      "margin_bottom": "12px",
+      "line_height": "1.4"
+    },
+    "p": {
+      "font_size": "15px",
+      "color": "#333333",
+      "line_height": "1.75",
+      "margin_bottom": "16px",
+      "letter_spacing": "0.5px",
+      "text_align": "justify"
+    },
+    "blockquote": {
+      "border_left": "4px solid #c9a962",
+      "background": "rgba(201,169,98,0.06)",
+      "padding": "12px 16px",
+      "margin_top": "16px",
+      "margin_bottom": "16px",
+      "border_radius": "0 8px 8px 0",
+      "font_size": "14px",
+      "color": "#666666",
+      "line_height": "1.75"
+    },
+    "blockquote_p": {
+      "font_size": "14px",
+      "color": "#666666",
+      "line_height": "1.75",
+      "margin_bottom": "0",
+      "letter_spacing": "0.3px"
+    },
+    "strong": {
+      "font_weight": "bold",
+      "color": "#c9a962"
+    },
+    "em": {
+      "font_style": "italic",
+      "color": "#666666"
+    },
+    "a": {
+      "color": "#c9a962",
+      "text_decoration": "none"
+    },
+    "img": {
+      "max_width": "100%",
+      "border_radius": "8px",
+      "margin_top": "16px",
+      "margin_bottom": "16px",
+      "box_shadow": "0 4px 12px rgba(0,0,0,0.08)"
+    },
+    "hr": {
+      "margin_top": "24px",
+      "margin_bottom": "24px",
+      "height": "1px",
+      "background": "linear-gradient(to right, transparent, #e8e3d8, transparent)",
+      "border": "none"
+    },
+    "code": {
+      "background": "rgba(201,169,98,0.06)",
+      "padding": "2px 6px",
+      "border_radius": "4px",
+      "font_size": "13px",
+      "color": "#c9a962",
+      "font_family": "Menlo, Monaco, Consolas, monospace"
+    },
+    "pre": {
+      "background": "#2d2d2d",
+      "color": "#f8f8f2",
+      "padding": "16px",
+      "border_radius": "0",
+      "overflow_x": "auto",
+      "font_size": "13px",
+      "line_height": "1.5",
+      "white_space": "pre-wrap",
+      "word_wrap": "break-word",
+      "word_break": "break-all"
+    },
+    "pre_code": {
+      "background": "none",
+      "padding": "0",
+      "color": "#f8f8f2",
+      "font_size": "13px",
+      "font_family": "Menlo, Monaco, Consolas, monospace"
+    },
+    "table": {
+      "width": "100%",
+      "border_collapse": "separate",
+      "margin_top": "16px",
+      "margin_bottom": "16px",
+      "font_size": "14px",
+      "border_spacing": "0",
+      "border_radius": "8px",
+      "overflow": "hidden"
+    },
+    "th": {
+      "background": "rgba(201,169,98,0.04)",
+      "padding": "10px 12px",
+      "border": "1px solid #e8e3d8",
+      "text_align": "left",
+      "font_weight": "bold",
+      "color": "#333333"
+    },
+    "td": {
+      "padding": "10px 12px",
+      "border": "1px solid #e8e3d8",
+      "color": "#333333"
+    },
+    "list_item_bullet": {
+      "color": "#c9a962",
+      "margin_right": "8px",
+      "font_weight": "bold"
+    },
+    "list_item_text": {
+      "font_size": "15px",
+      "color": "#333333",
+      "line_height": "1.75",
+      "letter_spacing": "0.5px"
+    },
+    "list_wrapper": {
+      "margin_top": "12px",
+      "margin_bottom": "12px"
+    },
+    "list_item_row": {
+      "display": "flex",
+      "margin_bottom": "8px",
+      "align_items": "flex-start"
+    },
+    "footnote_section": {
+      "margin_top": "32px",
+      "padding_top": "16px",
+      "border_top": "1px solid #e8e3d8"
+    },
+    "footnote_title": {
+      "font_size": "14px",
+      "font_weight": "bold",
+      "color": "#999999",
+      "margin_bottom": "12px"
+    },
+    "footnote_item": {
+      "font_size": "13px",
+      "color": "#999999",
+      "margin_bottom": "6px",
+      "line_height": "1.6",
+      "word_break": "break-all"
+    },
+    "footnote_sup": {
+      "font_size": "12px",
+      "color": "#c9a962",
+      "vertical_align": "super",
+      "margin_left": "2px"
+    },
+    "callout": {
+      "background": "rgba(201,169,98,0.06)",
+      "border_left": "4px solid #c9a962",
+      "padding": "16px",
+      "margin_top": "16px",
+      "margin_bottom": "16px",
+      "border_radius": "0 8px 8px 0"
+    },
+    "callout_title": {
+      "font_weight": "bold",
+      "color": "#c9a962",
+      "margin_bottom": "8px",
+      "font_size": "15px"
+    },
+    "callout_content": {
+      "font_size": "14px",
+      "color": "#666666",
+      "line_height": "1.75",
+      "letter_spacing": "0.3px"
+    },
+    "code_block": {
+      "background": "#2d2d2d",
+      "border_radius": "8px",
+      "margin_top": "16px",
+      "margin_bottom": "16px",
+      "overflow": "hidden"
+    },
+    "code_header": {
+      "display": "flex",
+      "align_items": "center",
+      "height": "36px",
+      "padding": "0 12px",
+      "background": "#2d2d2d"
+    }
+  },
+  "dark_mode": {
+    "pre": {
+      "bgcolor": "#2d2d2d",
+      "color": "#f8f8f2"
+    },
+    "pre_code": {
+      "color": "#f8f8f2"
+    },
+    "code": {
+      "bgcolor": "#2a2a2a",
+      "color": "#d4b870"
+    },
+    "blockquote": {
+      "bgcolor": "rgba(255,255,255,0.05)"
+    },
+    "th": {
+      "bgcolor": "#262626"
+    },
+    "callout": {
+      "bgcolor": "rgba(201,169,98,0.1)"
+    }
+  }
+}

@@ -210,7 +210,7 @@ def replace_all_images(html, article_dir, token):
     return html, replaced, failed
 
 
-def push_draft(token, title, content, thumb_media_id, author=""):
+def push_draft(token, title, content, thumb_media_id, author="小互", source_url=""):
     """推送文章到草稿箱"""
     url = f"https://api.weixin.qq.com/cgi-bin/draft/add?access_token={token}"
 
@@ -220,7 +220,7 @@ def push_draft(token, title, content, thumb_media_id, author=""):
                 "title": title,
                 "author": author,
                 "content": content,
-                "content_source_url": "",
+                "content_source_url": source_url,
                 "thumb_media_id": thumb_media_id,
                 "need_open_comment": 0,
                 "only_fans_can_comment": 0,
@@ -292,10 +292,14 @@ def main():
     parser.add_argument("--theme", default=None,
                         help="排版主题（仅 --input 模式有效，默认读取 gallery 选中的主题）")
     parser.add_argument("--author", "-a",
-                        default=CONFIG.get("wechat", {}).get("author", ""),
+                        default=CONFIG.get("wechat", {}).get("author", "小互"),
                         help="作者名")
+    parser.add_argument("--source-url", "-s", default="",
+                        help="原文链接（content_source_url，公众号文末「阅读原文」按钮指向）")
     parser.add_argument("--dry-run", action="store_true",
                         help="只做排版和图片上传，不推送草稿箱（用于测试）")
+    parser.add_argument("--yes", "-y", action="store_true",
+                        help="非交互模式：所有确认提示自动回 y（部分图片上传失败继续、其他）")
     args = parser.parse_args()
 
     # ── 1. 确定文章目录 ──────────────────────────────────────────────
@@ -369,6 +373,20 @@ def main():
     print(f"标题: {title}")
     print(f"作者: {author}")
 
+    # 标题长度预检：公众号标题硬限 64 字符，超过 30 字会影响展示
+    title_len = len(title)
+    if title_len > 64:
+        print(f"\n❌ 标题过长: {title_len} 字符 > 64（公众号 API 硬限）")
+        print(f"   请缩短标题再发布。建议 30 字以内，保留 2-3 个核心锚点。")
+        sys.exit(1)
+    elif title_len > 30:
+        print(f"\n⚠️  标题偏长: {title_len} 字符 > 30（公众号展示可能截断）")
+        if not args.yes:
+            resp = input("  继续用这个标题？(y/N) ").strip().lower()
+            if resp != "y":
+                print("  已中止，请缩短标题后重试")
+                sys.exit(0)
+
     # ── 4. 获取 token ────────────────────────────────────────────────
     print(f"\n获取 access_token...")
     token = get_access_token()
@@ -392,10 +410,13 @@ def main():
             sys.exit(1)
         elif failed > 0:
             print("  警告: 部分图片上传失败，文章中对应位置可能显示空白")
-            resp = input("  继续发布？(y/N) ").strip().lower()
-            if resp != "y":
-                print("  已中止")
-                sys.exit(0)
+            if args.yes:
+                print("  (--yes 已启用，自动继续)")
+            else:
+                resp = input("  继续发布？(y/N) ").strip().lower()
+                if resp != "y":
+                    print("  已中止")
+                    sys.exit(0)
     else:
         print("\n无正文图片需上传")
 
@@ -427,7 +448,7 @@ def main():
         return
 
     print(f"\n推送到草稿箱...")
-    media_id = push_draft(token, title, html, thumb_media_id, author)
+    media_id = push_draft(token, title, html, thumb_media_id, author, args.source_url)
 
     if media_id:
         print(f"\n{'='*40}")

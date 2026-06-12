@@ -48,7 +48,7 @@
       "display": "inline-block"
     },
     "p": {
-      "font_size": "15px",
+      "font_size": "16px",
       "color": "#4a413d",
       "line_height": "1.75",
       "margin_top": "0",
@@ -160,7 +160,7 @@
       "border_collapse": "separate",
       "margin_top": "16px",
       "margin_bottom": "16px",
-      "font_size": "15px",
+      "font_size": "14px",
       "border_spacing": "0",
       "border_radius": "12px",
       "overflow": "hidden",
@@ -200,7 +200,7 @@
       "margin_top": "4px"
     },
     "list_item_text": {
-      "font_size": "15px",
+      "font_size": "16px",
       "color": "#4a413d",
       "line_height": "1.75",
       "letter_spacing": "0.5px"
@@ -226,7 +226,7 @@
       "margin_bottom": "12px"
     },
     "footnote_item": {
-      "font_size": "12px",
+      "font_size": "13px",
       "color": "#999999",
       "margin_bottom": "6px",
       "line_height": "1.6",

@@ -8,7 +8,7 @@
     "blockquote_bg": "rgba(139,30,34,0.03)",
     "code_bg": "#faf8f5",
     "hr_color": "#8B1E22",
-    "footnote_bg": "#ffffff"
+    "footnote_bg": "rgba(139,30,34,0.04)"
   },
   "styles": {
     "wrapper": {
@@ -55,13 +55,13 @@
       "margin_bottom": "12px"
     },
     "p": {
-      "font_size": "15px",
+      "font_size": "16px",
       "color": "#333333",
       "line_height": "2",
       "margin_top": "0",
       "margin_bottom": "19px",
       "letter_spacing": "0.5px",
-      "text_align": "left"
+      "text_align": "justify"
     },
     "blockquote": {
       "border_left": "4px solid #8B1E22",
@@ -206,7 +206,7 @@
       "margin_top": "4px"
     },
     "list_item_text": {
-      "font_size": "15px",
+      "font_size": "16px",
       "color": "#333333",
       "line_height": "1.8",
       "letter_spacing": "0.5px"
@@ -232,7 +232,7 @@
       "margin_bottom": "12px"
     },
     "footnote_item": {
-      "font_size": "12px",
+      "font_size": "13px",
       "color": "#999999",
       "margin_bottom": "6px",
       "line_height": "1.6",

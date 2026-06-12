@@ -4,7 +4,8 @@
   "image_search_paths": [],
   "settings": {
     "default_theme": "newspaper",
-    "auto_open_browser": true
+    "auto_open_browser": true,
+    "header_author_label": ""
   },
   "wechat": {
     "app_id": "YOUR_APP_ID",
@@ -14,6 +15,11 @@
   "cover": {
     "output_dir": "~/Documents/covers",
     "image_generation_script": ""
+  },
+  "smart_api": {
+    "base_url": "https://api.openai.com/v1",
+    "api_key": "YOUR_API_KEY",
+    "model": "gpt-4o-mini"
   },
   "ai": {
     "url": "https://openrouter.ai/api/v1",

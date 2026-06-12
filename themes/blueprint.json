@@ -1,0 +1,246 @@
+{
+  "name": "工程蓝图",
+  "description": "工程图纸质感：深钴蓝底 #0B3D66 + 白细线 #E5F0FA + 浅蓝 #64B5F6 + 网格感。H1 uppercase 大号白字 + 下方双细线（刻度感），H2 浅蓝 + 左侧细竖线，p 浅白色等宽字体，代码块带尺寸刻度线感。独一份工程图纸感（工业制图/CAD 图风）。适合硬核技术架构/系统设计/工程决策。",
+  "source": "https://github.com/GordenSun/WX",
+  "colors": {
+    "primary": "#E5F0FA",
+    "accent": "#64B5F6",
+    "background": "#0B3D66",
+    "blockquote_bg": "rgba(100,181,246,0.10)",
+    "code_bg": "rgba(100,181,246,0.15)",
+    "hr_color": "#64B5F6",
+    "footnote_bg": "rgba(100,181,246,0.04)"
+  },
+  "styles": {
+    "wrapper": {
+      "background_color": "#0B3D66",
+      "padding": "26px 18px",
+      "font_family": "'Inter','Helvetica Neue','PingFang SC',sans-serif"
+    },
+    "h1": {
+      "font_size": "24px",
+      "font_weight": "700",
+      "color": "#E5F0FA",
+      "text_align": "center",
+      "line_height": "1.3",
+      "margin_top": "38px",
+      "margin_bottom": "26px",
+      "padding_bottom": "14px",
+      "border_bottom": "1px solid #64B5F6",
+      "letter_spacing": "4px",
+      "text_transform": "uppercase"
+    },
+    "h2": {
+      "font_size": "18px",
+      "font_weight": "700",
+      "color": "#64B5F6",
+      "line_height": "1.4",
+      "margin_top": "32px",
+      "margin_bottom": "16px",
+      "padding_left": "14px",
+      "border_left": "1px solid #64B5F6",
+      "letter_spacing": "2px",
+      "text_transform": "uppercase"
+    },
+    "h3": {
+      "font_size": "15px",
+      "font_weight": "600",
+      "color": "#E5F0FA",
+      "line_height": "1.5",
+      "margin_top": "26px",
+      "margin_bottom": "12px",
+      "letter_spacing": "1.5px",
+      "text_transform": "uppercase"
+    },
+    "h4": {
+      "font_size": "13px",
+      "font_weight": "700",
+      "color": "#64B5F6",
+      "line_height": "1.55",
+      "margin_top": "22px",
+      "margin_bottom": "10px",
+      "letter_spacing": "2px",
+      "text_transform": "uppercase"
+    },
+    "h5": {
+      "font_size": "13px",
+      "font_weight": "600",
+      "color": "#B8D4EE",
+      "margin_top": "18px",
+      "margin_bottom": "8px",
+      "line_height": "1.55"
+    },
+    "h6": {
+      "font_size": "11px",
+      "font_weight": "600",
+      "color": "#7FA8CE",
+      "margin_top": "16px",
+      "margin_bottom": "6px",
+      "line_height": "1.55",
+      "letter_spacing": "1.5px",
+      "text_transform": "uppercase"
+    },
+    "p": {
+      "font_size": "15px",
+      "color": "#E5F0FA",
+      "line_height": "1.8",
+      "margin_top": "0",
+      "margin_bottom": "16px",
+      "letter_spacing": "0.3px",
+      "font_family": "'JetBrains Mono','SF Mono','PingFang SC',monospace"
+    },
+    "blockquote": {
+      "background": "rgba(100,181,246,0.10)",
+      "border_left": "1px dashed #64B5F6",
+      "padding": "12px 18px",
+      "border_radius": "0",
+      "margin_top": "22px",
+      "margin_bottom": "22px",
+      "font_size": "13px",
+      "color": "#B8D4EE",
+      "line_height": "1.75",
+      "font_family": "'JetBrains Mono','SF Mono',monospace"
+    },
+    "blockquote_p": {
+      "font_size": "13px",
+      "color": "#B8D4EE",
+      "line_height": "1.75",
+      "margin_bottom": "0",
+      "background": "transparent"
+    },
+    "strong": {
+      "font_weight": "700",
+      "color": "#64B5F6",
+      "border_bottom": "1px solid #64B5F6"
+    },
+    "em": {
+      "font_style": "italic",
+      "color": "#B8D4EE"
+    },
+    "a": {
+      "color": "#64B5F6",
+      "text_decoration": "underline",
+      "text_decoration_style": "dashed",
+      "text_underline_offset": "3px"
+    },
+    "img": {
+      "max_width": "100%",
+      "display": "block",
+      "margin_top": "18px",
+      "margin_bottom": "8px",
+      "border": "1px solid #64B5F6",
+      "padding": "8px",
+      "background": "rgba(11,61,102,0.5)"
+    },
+    "img_wrapper": {
+      "background": "transparent",
+      "padding": "0",
+      "margin_top": "18px",
+      "margin_bottom": "18px"
+    },
+    "hr": {
+      "margin_top": "30px",
+      "margin_bottom": "30px",
+      "height": "0",
+      "border": "none",
+      "border_top": "1px dashed #64B5F6"
+    },
+    "code": {
+      "background": "rgba(100,181,246,0.15)",
+      "padding": "1px 6px",
+      "border_radius": "0",
+      "font_size": "90%",
+      "color": "#E5F0FA",
+      "font_family": "'JetBrains Mono','SF Mono',Menlo,monospace",
+      "border": "1px solid #64B5F6"
+    },
+    "code_block": {
+      "background": "#062540",
+      "border": "1px solid #64B5F6",
+      "border_radius": "0",
+      "margin_top": "22px",
+      "margin_bottom": "22px",
+      "overflow": "hidden"
+    },
+    "code_header": {
+      "display": "flex",
+      "align_items": "center",
+      "height": "28px",
+      "padding": "0 14px",
+      "background": "#64B5F6",
+      "color": "#0B3D66",
+      "font_size": "10px",
+      "font_weight": "700",
+      "letter_spacing": "2px",
+      "text_transform": "uppercase"
+    },
+    "pre": {
+      "background": "#062540",
+      "color": "#E5F0FA",
+      "padding": "12px 16px",
+      "overflow_x": "auto",
+      "margin_top": "0",
+      "margin_bottom": "0",
+      "font_size": "12px",
+      "line_height": "1.7",
+      "white_space": "pre-wrap"
+    },
+    "pre_code": {
+      "background": "none",
+      "padding": "0",
+      "color": "#E5F0FA",
+      "font_size": "12px",
+      "font_family": "'JetBrains Mono','SF Mono',Menlo,monospace"
+    },
+    "table": {
+      "width": "100%",
+      "border_collapse": "collapse",
+      "margin_top": "20px",
+      "margin_bottom": "20px",
+      "font_size": "13px",
+      "border": "1px solid #64B5F6",
+      "font_family": "'JetBrains Mono',monospace"
+    },
+    "th": {
+      "padding": "8px 12px",
+      "text_align": "left",
+      "font_weight": "700",
+      "color": "#0B3D66",
+      "background": "#64B5F6",
+      "letter_spacing": "1.5px",
+      "text_transform": "uppercase",
+      "font_size": "11px",
+      "border": "1px solid #64B5F6"
+    },
+    "td": {
+      "padding": "8px 12px",
+      "border": "1px dashed rgba(100,181,246,0.4)",
+      "color": "#E5F0FA"
+    },
+    "list_item_bullet": {
+      "color": "#64B5F6",
+      "margin_right": "10px",
+      "font_weight": "700"
+    },
+    "ol_item_bullet": {
+      "color": "#64B5F6",
+      "font_weight": "700",
+      "margin_right": "10px"
+    },
+    "list_item_text": {
+      "font_size": "14px",
+      "color": "#E5F0FA",
+      "line_height": "1.8",
+      "font_family": "'JetBrains Mono','SF Mono',monospace"
+    },
+    "list_wrapper": {
+      "margin_top": "12px",
+      "margin_bottom": "12px"
+    },
+    "list_item_row": {
+      "display": "flex",
+      "margin_bottom": "6px",
+      "align_items": "flex-start"
+    }
+  }
+}

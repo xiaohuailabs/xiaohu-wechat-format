@@ -49,62 +49,97 @@ body {
     font-weight: 500;
 }
 
-/* ── Main Container ── */
-.main-container {
-    max-width: 700px;
-    margin: 80px auto 40px;
-    padding: 0 20px;
+/* ── Two-Column Layout ── */
+.layout {
+    display: flex;
+    gap: 36px;
+    max-width: 1080px;
+    margin: 78px auto 40px;
+    padding: 0 28px;
+    align-items: flex-start;
+}
+.picker {
+    width: 380px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.preview-pane {
+    flex: 1;
+    position: sticky;
+    top: 86px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 12px;
+    min-width: 0;
+}
+.section-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin: 4px 0 0;
 }
 
 /* ── Theme Buttons ── */
 .theme-buttons {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    max-width: 600px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
 }
 .theme-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    align-items: center;
-    margin-bottom: 8px;
+    gap: 7px;
+    width: 100%;
+    margin-bottom: 16px;
+    justify-content: flex-start;
 }
 .group-label {
-    font-size: 12px;
-    color: #86868b;
-    font-weight: 600;
-    min-width: 60px;
-    letter-spacing: 0.5px;
+    flex: 0 0 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 11.5px;
+    color: #a1a1a6;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0 0 9px;
+}
+.group-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #ececec;
+    margin-left: 12px;
 }
 .theme-btn {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 6px 14px;
+    padding: 6px 12px;
     background: #fff;
-    border: 2px solid #e0e0e0;
-    border-radius: 20px;
-    font-size: 13px;
+    border: 1px solid #e8e8ea;
+    border-radius: 16px;
+    font-size: 12.5px;
     font-weight: 500;
-    color: #333;
+    color: #3a3a3c;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.15s;
     font-family: inherit;
 }
 .theme-btn:hover {
-    border-color: #ccc;
+    border-color: #c7c7cc;
     background: #fafafa;
 }
 .theme-btn.active {
     border-color: #07c160;
-    background: rgba(7,193,96,0.06);
+    background: rgba(7,193,96,0.07);
     color: #07c160;
+    font-weight: 600;
 }
 .theme-btn.recommended {
     position: relative;
@@ -150,12 +185,18 @@ body {
     border-bottom: 1px solid #e0e0e0;
 }
 .preview-scroll {
-    max-height: 600px;
+    max-height: calc(100vh - 295px);
+    min-height: 500px;
     overflow-y: auto;
     padding: 20px;
 }
 .theme-preview {
     font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    transition: opacity 0.22s ease;
+}
+.phone-header #previewTheme {
+    color: #07c160;
+    font-weight: 600;
 }
 
 /* ── Color Variants (placeholder) ── */
@@ -187,28 +228,39 @@ body {
     background: #34c759;
 }
 
-/* ── Font Size Selector ── */
+/* ── Settings Card (字号 + 字体) ── */
+.settings-card {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ececec;
+    border-radius: 14px;
+    padding: 2px 16px;
+}
 .font-size-selector {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 16px;
-    padding: 8px 0;
+    gap: 9px;
+    padding: 11px 0;
+    flex-wrap: wrap;
+}
+.font-size-selector + .font-size-selector {
+    border-top: 1px solid #f2f2f2;
 }
 .fs-label {
     font-size: 13px;
-    color: #999;
+    color: #86868b;
+    min-width: 32px;
+    font-weight: 500;
 }
 .fs-btn {
-    padding: 4px 12px;
-    border: 1px solid #ddd;
+    padding: 5px 13px;
+    border: 1px solid #e3e3e5;
     border-radius: 16px;
     background: #fff;
     font-size: 13px;
-    color: #666;
+    color: #555;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.18s;
     font-family: inherit;
 }
 .fs-btn:hover {
@@ -222,21 +274,28 @@ body {
 }
 
 /* ── Responsive ── */
+/* 窄屏:两栏堆叠回单栏，预览不再钉住 */
+@media (max-width: 880px) {
+    .layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin-top: 70px;
+        padding: 0 14px;
+    }
+    .picker {
+        width: 100%;
+        max-width: 560px;
+    }
+    .preview-pane {
+        position: static;
+        width: 100%;
+        max-width: 560px;
+    }
+}
 @media (max-width: 600px) {
     .toolbar { padding: 10px 14px; }
     .toolbar-hint { display: none; }
-    .main-container {
-        margin-top: 68px;
-        padding: 0 12px;
-    }
-    .theme-buttons {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        width: 100%;
-    }
-    .theme-btn {
-        justify-content: center;
-    }
     .phone-frame {
         border-radius: 0;
         box-shadow: none;
@@ -258,32 +317,47 @@ body {
     <span class="toolbar-hint">选一个你喜欢的风格</span>
 </div>
 
-<!-- ── Main Content ── -->
-<div class="main-container">
+<!-- ── Main Content: 左右两栏 ── -->
+<div class="layout">
 
-    <!-- Font Size Selector -->
-    <div class="font-size-selector">
-        <span class="fs-label">字号</span>
-        <button class="fs-btn active" data-size="15" onclick="switchFontSize(15)">15px</button>
-        <button class="fs-btn" data-size="16" onclick="switchFontSize(16)">16px</button>
-    </div>
+    <!-- 左栏：主题选择（自己滚） -->
+    <div class="picker">
+        <!-- Settings Card: Font Size & Font Family -->
+        <div class="settings-card">
+            <div class="font-size-selector">
+                <span class="fs-label">字号</span>
+                <button class="fs-btn" data-size="15" onclick="switchFontSize(15)">15px</button>
+                <button class="fs-btn active" data-size="16" onclick="switchFontSize(16)">16px</button>
+                <button class="fs-btn" data-size="17" onclick="switchFontSize(17)">17px</button>
+            </div>
+            <div class="font-size-selector">
+                <span class="fs-label">字体</span>
+                <button class="fs-btn active" data-font="default" onclick="switchFont('default')">默认</button>
+                <button class="fs-btn" data-font="serif" onclick="switchFont('serif')" style="font-family:Georgia,serif">衬线</button>
+                <button class="fs-btn" data-font="songti" onclick="switchFont('songti')" style="font-family:'Songti SC',STSong,serif">宋体</button>
+                <button class="fs-btn" data-font="kaiti" onclick="switchFont('kaiti')" style="font-family:'Kaiti SC',STKaiti,cursive">楷体</button>
+                <button class="fs-btn" data-font="yuanti" onclick="switchFont('yuanti')" style="font-family:'Yuanti SC','PingFang SC',sans-serif">圆体</button>
+                <button class="fs-btn" data-font="fangsong" onclick="switchFont('fangsong')" style="font-family:STFangsong,FangSong,serif">仿宋</button>
+            </div>
+        </div>
 
-    <!-- Theme Buttons -->
-    <div class="theme-buttons">
+        <div class="section-title">选择风格</div>
+        <div class="theme-buttons">
 {{THEME_BUTTONS}}
-    </div>
-
-    <!-- Phone Frame Preview -->
-    <div class="phone-frame">
-        <div class="phone-header">微信公众号预览</div>
-        <div class="preview-scroll" id="previewScroll">
-{{THEME_PREVIEWS}}
         </div>
     </div>
 
-    <!-- Action Buttons -->
-    <button class="action-btn" id="confirmBtn" onclick="confirmAndCopy()">✓ 确认 — 回到 Claude 回复主题名 推送到公众号</button>
-    <button class="action-btn" id="copyBtn" onclick="applyTheme()" style="background:#86868b;margin-top:8px;">复制内容到剪贴板 去公众号粘贴</button>
+    <!-- 右栏：手机预览（钉住常驻） -->
+    <div class="preview-pane">
+        <div class="phone-frame">
+            <div class="phone-header">微信公众号预览 · 当前：<span id="previewTheme">—</span></div>
+            <div class="preview-scroll" id="previewScroll">
+{{THEME_PREVIEWS}}
+            </div>
+        </div>
+        <button class="action-btn" id="confirmBtn" onclick="confirmAndCopy()">✓ 确认 — 复制选择，去 Claude Code 粘贴</button>
+        <button class="action-btn" id="copyBtn" onclick="applyTheme()" style="background:#86868b;margin-top:8px;">复制内容到剪贴板 去公众号粘贴</button>
+    </div>
 
 </div>
 
@@ -291,39 +365,50 @@ body {
 var selectedTheme = '{{DEFAULT_THEME}}';
 
 function switchTheme(themeId) {
-    // Hide all previews
+    var scroller = document.getElementById('previewScroll');
+    // ① 切换前记录当前滚动比例(用于切主题后停在同一段，方便 A/B 对比)
+    var ratio = 0;
+    if (scroller && scroller.scrollHeight > scroller.clientHeight) {
+        ratio = scroller.scrollTop / scroller.scrollHeight;
+    }
+    // 隐藏所有预览
     var previews = document.querySelectorAll('.theme-preview');
     for (var i = 0; i < previews.length; i++) {
         previews[i].style.display = 'none';
     }
-    // Show target
-    var target = document.querySelector('.theme-preview[data-theme="' + themeId + '"]');
-    if (target) {
-        target.style.display = 'block';
-    }
-    // Update button active states
+    // 更新按钮 active 状态，同时取出当前主题名
+    var themeName = themeId;
     var btns = document.querySelectorAll('.theme-btn');
     for (var i = 0; i < btns.length; i++) {
         if (btns[i].getAttribute('data-theme') === themeId) {
             btns[i].classList.add('active');
+            themeName = btns[i].textContent.trim();
         } else {
             btns[i].classList.remove('active');
         }
     }
-    // Update selected theme + persist to /tmp via fetch (for publish.py)
+    // 显示目标 + ③ 淡入 + ① 恢复滚动比例
+    var target = document.querySelector('.theme-preview[data-theme="' + themeId + '"]');
+    if (target) {
+        target.style.display = 'block';
+        target.style.opacity = '0';
+        requestAnimationFrame(function() { target.style.opacity = '1'; });
+        if (scroller) scroller.scrollTop = ratio * scroller.scrollHeight;
+    }
+    // ② 更新预览头的主题名
+    var hdr = document.getElementById('previewTheme');
+    if (hdr) hdr.textContent = themeName;
+    // 持久化选择
     selectedTheme = themeId;
     try {
-        // Write to localStorage as reliable persistence
         localStorage.setItem('wechat-format-theme', themeId);
     } catch(e) {}
-    // Reset confirm button
+    // 重置确认按钮
     var confirmBtn = document.getElementById('confirmBtn');
     if (confirmBtn) {
-        confirmBtn.textContent = '✓ 确认 — 回到 Claude 回复主题名 推送到公众号';
+        confirmBtn.textContent = '✓ 确认 — 复制选择，去 Claude Code 粘贴';
         confirmBtn.classList.remove('copied');
     }
-    // Scroll preview to top
-    document.getElementById('previewScroll').scrollTop = 0;
 }
 
 function copyCurrentPreview() {
@@ -361,14 +446,37 @@ function copyCurrentPreview() {
 }
 
 function confirmAndCopy() {
+    var themeId = selectedTheme || '';
     var themeName = '';
     var activeBtn = document.querySelector('.theme-btn.active');
     if (activeBtn) {
         themeName = activeBtn.textContent.replace('推荐', '').trim();
     }
-    var btn = document.getElementById('confirmBtn');
-    btn.textContent = '✓ 已确认「' + themeName + '」— 回到 Claude 回复「' + themeName + '」推送到公众号';
-    btn.classList.add('copied');
+    // 获取当前字号
+    var fontSize = '15';
+    var activeFsBtn = document.querySelector('.fs-btn.active');
+    if (activeFsBtn) {
+        fontSize = activeFsBtn.dataset.size || '15';
+    }
+    // 组装指令文本
+    var command = themeId + ' ' + fontSize + 'px';
+    // 复制到剪贴板
+    navigator.clipboard.writeText(command).then(function() {
+        var btn = document.getElementById('confirmBtn');
+        btn.textContent = '✓ 已复制「' + command + '」— 去 Claude Code 粘贴即可';
+        btn.classList.add('copied');
+    }).catch(function() {
+        // fallback
+        var ta = document.createElement('textarea');
+        ta.value = command;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        var btn = document.getElementById('confirmBtn');
+        btn.textContent = '✓ 已复制「' + command + '」— 去 Claude Code 粘贴即可';
+        btn.classList.add('copied');
+    });
 }
 
 function applyTheme() {
@@ -404,9 +512,9 @@ function switchFontSize(size) {
     document.querySelectorAll('.theme-preview').forEach(function(preview) {
         preview.querySelectorAll('p').forEach(function(p) {
             var currentSize = parseInt(window.getComputedStyle(p).fontSize);
-            if (currentSize >= 14 && currentSize <= 16) {
+            if (currentSize >= 14 && currentSize <= 17) {
                 p.style.fontSize = size + 'px';
-                p.style.lineHeight = size === 16 ? '1.75' : '1.8';
+                p.style.lineHeight = size >= 17 ? '1.7' : size === 16 ? '1.75' : '1.8';
             }
         });
         // 修改列表项文字
@@ -421,12 +529,41 @@ function switchFontSize(size) {
     localStorage.setItem('wechat-format-fontsize', size);
 }
 
+var FONT_MAP = {
+    'default': '-apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif',
+    'serif': 'Georgia, "Noto Serif SC", "Source Han Serif SC", "Songti SC", STSong, serif',
+    'songti': '"Songti SC", STSong, "Noto Serif SC", SimSun, serif',
+    'kaiti': '"Kaiti SC", STKaiti, KaiTi, cursive',
+    'yuanti': '"Yuanti SC", "PingFang SC", "Noto Sans SC", sans-serif',
+    'fangsong': 'STFangsong, FangSong, "Noto Serif SC", serif'
+};
+function switchFont(fontKey) {
+    document.querySelectorAll('[data-font]').forEach(function(btn) {
+        btn.classList.toggle('active', btn.dataset.font === fontKey);
+    });
+    var family = FONT_MAP[fontKey] || FONT_MAP['default'];
+    document.querySelectorAll('.theme-preview').forEach(function(preview) {
+        preview.querySelectorAll('p, span, section').forEach(function(el) {
+            el.style.fontFamily = family;
+        });
+    });
+    localStorage.setItem('wechat-format-fontfamily', fontKey);
+}
+
 // 页面加载时恢复上次选择
 document.addEventListener('DOMContentLoaded', function() {
-    var saved = localStorage.getItem('wechat-format-fontsize');
-    if (saved && saved !== '15') {
-        switchFontSize(parseInt(saved));
+    var savedSize = localStorage.getItem('wechat-format-fontsize');
+    if (savedSize && savedSize !== '16') {
+        switchFontSize(parseInt(savedSize));
     }
+    var savedFont = localStorage.getItem('wechat-format-fontfamily');
+    if (savedFont && savedFont !== 'default') {
+        switchFont(savedFont);
+    }
+    // 初始化预览头的主题名（取默认激活的主题按钮）
+    var activeBtn = document.querySelector('.theme-btn.active');
+    var hdr = document.getElementById('previewTheme');
+    if (activeBtn && hdr) hdr.textContent = activeBtn.textContent.trim();
 });
 
 // ESC does nothing special here (no overlay)

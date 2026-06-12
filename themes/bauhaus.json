@@ -5,10 +5,10 @@
     "primary": "#1a1a1a",
     "accent": "#E30613",
     "background": "#ffffff",
-    "blockquote_bg": "#fff4d6",
+    "blockquote_bg": "rgba(227,6,19,0.06)",
     "code_bg": "#f0f0f0",
     "hr_color": "#E30613",
-    "footnote_bg": "#ffffff"
+    "footnote_bg": "rgba(227,6,19,0.04)"
   },
   "styles": {
     "wrapper": {
@@ -58,19 +58,19 @@
       "margin_bottom": "14px"
     },
     "p": {
-      "font_size": "15px",
+      "font_size": "16px",
       "color": "#1a1a1a",
-      "line_height": "1.65",
+      "line_height": "1.75",
       "margin_top": "0",
       "margin_bottom": "18px",
       "letter_spacing": "0.5px",
-      "text_align": "left"
+      "text_align": "justify"
     },
     "blockquote": {
       "border_left": "6px solid #F5A623",
       "border_right": "2px solid #004D9F",
       "border_top": "2px solid #1a1a1a",
-      "background": "linear-gradient(135deg, #fff4d6 0%, #fff8ea 100%)",
+      "background": "rgba(227,6,19,0.06)",
       "padding": "16px 20px",
       "margin_top": "24px",
       "margin_bottom": "24px",
@@ -123,7 +123,7 @@
       "border": "none"
     },
     "code": {
-      "background": "#f0f0f0",
+      "background": "rgba(227,6,19,0.06)",
       "padding": "3px 6px",
       "border_radius": "0",
       "font_size": "13px",
@@ -211,9 +211,9 @@
       "margin_top": "4px"
     },
     "list_item_text": {
-      "font_size": "15px",
+      "font_size": "16px",
       "color": "#1a1a1a",
-      "line_height": "1.65",
+      "line_height": 1.75,
       "letter_spacing": "0.5px"
     },
     "list_wrapper": {
@@ -238,7 +238,7 @@
       "text_transform": "uppercase"
     },
     "footnote_item": {
-      "font_size": "12px",
+      "font_size": "13px",
       "color": "#666666",
       "margin_bottom": "6px",
       "line_height": "1.6",
@@ -251,7 +251,7 @@
       "margin_left": "2px"
     },
     "callout": {
-      "background": "#fff4d6",
+      "background": "rgba(227,6,19,0.06)",
       "border_left": "6px solid #F5A623",
       "border_top": "2px solid #1a1a1a",
       "padding": "16px",
@@ -348,5 +348,8 @@
     "ol_item_bullet": {
       "bgcolor": "#003570"
     }
+  },
+  "lint": {
+    "display_type": true
   }
 }

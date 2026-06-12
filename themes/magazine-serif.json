@@ -1,0 +1,269 @@
+{
+  "name": "杂志 Serif",
+  "description": "印刷级杂志大字风 + Source Serif/Georgia 衬线 + 黑白对比 + 正红 #D11A2A 点缀。超大 H1 (30px) 居中压字距、H2 小型大写下 1px 细线、H3 italic 斜体、H4 uppercase 红色标签、p 两端对齐+首行缩进。适合深度解读/人物稿/读书笔记/长评论。",
+  "source": "https://github.com/GordenSun/WX",
+  "colors": {
+    "primary": "#111111",
+    "accent": "#D11A2A",
+    "background": "#FFFFFF",
+    "blockquote_bg": "#F9F9F5",
+    "code_bg": "#F2F2F0",
+    "hr_color": "#111111",
+    "footnote_bg": "rgba(17,17,17,0.03)"
+  },
+  "styles": {
+    "wrapper": {
+      "background_color": "#FFFFFF",
+      "padding": "24px 16px",
+      "font_family": "'Source Serif Pro',Georgia,'Songti SC','PingFang SC',serif"
+    },
+    "h1": {
+      "font_size": "28px",
+      "font_weight": "700",
+      "color": "#111111",
+      "text_align": "center",
+      "line_height": "1.3",
+      "margin_top": "36px",
+      "margin_bottom": "26px",
+      "letter_spacing": "-0.01em",
+      "padding_bottom": "14px",
+      "border_bottom": "3px solid #111111",
+      "font_family": "'Source Serif Pro',Georgia,'Songti SC',serif"
+    },
+    "h2": {
+      "font_size": "22px",
+      "font_weight": "700",
+      "color": "#111111",
+      "line_height": "1.35",
+      "margin_top": "32px",
+      "margin_bottom": "16px",
+      "padding_bottom": "6px",
+      "border_bottom": "1px solid #111111",
+      "letter_spacing": "1px"
+    },
+    "h3": {
+      "font_size": "22px",
+      "font_weight": "600",
+      "font_style": "italic",
+      "color": "#111111",
+      "line_height": "1.4",
+      "margin_top": "26px",
+      "margin_bottom": "14px",
+      "font_family": "'Source Serif Pro',Georgia,'Songti SC',serif"
+    },
+    "h4": {
+      "font_size": "13px",
+      "font_weight": "700",
+      "color": "#D11A2A",
+      "line_height": "1.5",
+      "margin_top": "22px",
+      "margin_bottom": "10px",
+      "letter_spacing": "2.5px",
+      "text_transform": "uppercase"
+    },
+    "h5": {
+      "font_size": "15px",
+      "font_weight": "600",
+      "color": "#333333",
+      "margin_top": "18px",
+      "margin_bottom": "8px",
+      "line_height": "1.5"
+    },
+    "h6": {
+      "font_size": "13px",
+      "font_weight": "600",
+      "color": "#666666",
+      "margin_top": "16px",
+      "margin_bottom": "6px",
+      "line_height": "1.5",
+      "letter_spacing": "1px"
+    },
+    "p": {
+      "font_size": "17px",
+      "color": "#111111",
+      "line_height": "1.9",
+      "margin_top": "0",
+      "margin_bottom": "18px",
+      "letter_spacing": "0.2px",
+      "text_align": "justify",
+      "text_indent": "2em"
+    },
+    "blockquote": {
+      "padding": "18px 20px",
+      "margin": "26px 30px",
+      "font_size": "19px",
+      "color": "#333333",
+      "line_height": "1.75",
+      "text_align": "center",
+      "font_style": "italic",
+      "border_top": "2px solid #111111",
+      "border_bottom": "2px solid #111111",
+      "background": "transparent",
+      "font_family": "'Source Serif Pro',Georgia,'Songti SC',serif"
+    },
+    "blockquote_p": {
+      "font_size": "19px",
+      "color": "#333333",
+      "line_height": "1.75",
+      "margin_bottom": "0",
+      "letter_spacing": "0.3px",
+      "background": "transparent",
+      "font_style": "italic"
+    },
+    "strong": {
+      "font_weight": "700",
+      "color": "#D11A2A"
+    },
+    "em": {
+      "font_style": "italic",
+      "color": "#555555"
+    },
+    "a": {
+      "color": "#D11A2A",
+      "text_decoration": "underline",
+      "text_underline_offset": "3px"
+    },
+    "img": {
+      "max_width": "100%",
+      "border_radius": "0",
+      "display": "block",
+      "margin_top": "18px",
+      "margin_bottom": "10px"
+    },
+    "img_wrapper": {
+      "background": "transparent",
+      "padding": "0",
+      "margin_top": "18px",
+      "margin_bottom": "18px"
+    },
+    "hr": {
+      "margin_top": "32px",
+      "margin_bottom": "32px",
+      "height": "3px",
+      "width": "60px",
+      "background": "#111111",
+      "border": "none"
+    },
+    "code": {
+      "background": "#F2F2F0",
+      "padding": "1px 5px",
+      "border_radius": "2px",
+      "font_size": "90%",
+      "color": "#111111",
+      "font_family": "'SF Mono',Menlo,Consolas,monospace"
+    },
+    "code_block": {
+      "background": "#F9F9F5",
+      "border": "1px solid #E0E0DC",
+      "border_radius": "2px",
+      "margin_top": "22px",
+      "margin_bottom": "22px",
+      "overflow": "hidden"
+    },
+    "code_header": {
+      "display": "flex",
+      "align_items": "center",
+      "height": "30px",
+      "padding": "0 14px",
+      "background": "#111111",
+      "color": "#FFFFFF",
+      "font_size": "11px",
+      "letter_spacing": "1.5px",
+      "text_transform": "uppercase"
+    },
+    "pre": {
+      "background": "#F9F9F5",
+      "color": "#111111",
+      "padding": "14px 16px",
+      "border_radius": "0",
+      "overflow_x": "auto",
+      "margin_top": "0",
+      "margin_bottom": "0",
+      "font_size": "13px",
+      "line_height": "1.7",
+      "white_space": "pre-wrap",
+      "word_wrap": "break-word"
+    },
+    "pre_code": {
+      "background": "none",
+      "padding": "0",
+      "color": "#111111",
+      "font_size": "13px",
+      "font_family": "'SF Mono',Menlo,Consolas,monospace"
+    },
+    "table": {
+      "width": "100%",
+      "border_collapse": "collapse",
+      "margin_top": "20px",
+      "margin_bottom": "20px",
+      "font_size": "14px"
+    },
+    "th": {
+      "padding": "10px 12px",
+      "text_align": "left",
+      "font_weight": "700",
+      "color": "#111111",
+      "background": "transparent",
+      "border_bottom": "2px solid #111111",
+      "letter_spacing": "1px",
+      "text_transform": "uppercase",
+      "font_size": "12px"
+    },
+    "td": {
+      "padding": "10px 12px",
+      "border_bottom": "1px solid #E0E0DC",
+      "color": "#111111"
+    },
+    "list_item_bullet": {
+      "color": "#D11A2A",
+      "margin_right": "10px",
+      "font_weight": "bold"
+    },
+    "ol_item_bullet": {
+      "color": "#D11A2A",
+      "font_weight": "700",
+      "margin_right": "10px"
+    },
+    "list_item_text": {
+      "font_size": "17px",
+      "color": "#111111",
+      "line_height": "1.9",
+      "letter_spacing": "0.2px"
+    },
+    "list_wrapper": {
+      "margin_top": "14px",
+      "margin_bottom": "14px"
+    },
+    "list_item_row": {
+      "display": "flex",
+      "margin_bottom": "6px",
+      "align_items": "flex-start"
+    },
+    "footnote_section": {
+      "margin_top": "36px",
+      "padding_top": "18px",
+      "border_top": "1px solid #111111"
+    },
+    "footnote_title": {
+      "font_size": "12px",
+      "font_weight": "700",
+      "color": "#111111",
+      "margin_bottom": "12px",
+      "letter_spacing": "2px",
+      "text_transform": "uppercase"
+    },
+    "footnote_item": {
+      "font_size": "13px",
+      "color": "#555555",
+      "margin_bottom": "6px",
+      "line_height": "1.6",
+      "word_break": "break-all"
+    },
+    "footnote_sup": {
+      "font_size": "12px",
+      "color": "#D11A2A",
+      "vertical_align": "super",
+      "margin_left": "2px"
+    }
+  }
+}

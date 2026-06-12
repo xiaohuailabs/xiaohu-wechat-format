@@ -5,10 +5,10 @@
     "primary": "#333333",
     "accent": "#07c160",
     "background": "#ffffff",
-    "blockquote_bg": "#f0f7f2",
+    "blockquote_bg": "rgba(7,193,96,0.06)",
     "code_bg": "#f0f7f2",
     "hr_color": "#07c160",
-    "footnote_bg": "#ffffff"
+    "footnote_bg": "rgba(7,193,96,0.04)"
   },
   "styles": {
     "wrapper": {
@@ -16,7 +16,7 @@
       "padding": "16px"
     },
     "h1": {
-      "font_size": "29px",
+      "font_size": "26px",
       "font_weight": "700",
       "color": "#163325",
       "line_height": "1.32",
@@ -31,7 +31,7 @@
       "box_shadow": "0 6px 14px rgba(7,193,96,0.05)"
     },
     "h2": {
-      "font_size": "23px",
+      "font_size": "22px",
       "font_weight": "700",
       "color": "#067647",
       "line_height": "1.4",
@@ -54,17 +54,17 @@
       "padding": "0 0 6px 12px"
     },
     "p": {
-      "font_size": "15px",
+      "font_size": "16px",
       "color": "#333333",
       "line_height": "1.75",
       "margin_top": "0",
       "margin_bottom": "18px",
-      "letter_spacing": "0.02em",
-      "text_align": "left"
+      "letter_spacing": "0.3px",
+      "text_align": "justify"
     },
     "blockquote": {
       "border_left": "4px solid #07c160",
-      "background": "linear-gradient(135deg, #f0f7f2 0%, #f8fcf9 100%)",
+      "background": "linear-gradient(135deg, rgba(7,193,96,0.06) 0%, rgba(7,193,96,0.03) 100%)",
       "padding": "16px 20px",
       "border_radius": "12px",
       "margin_top": "24px",
@@ -117,7 +117,7 @@
       "border": "none"
     },
     "code": {
-      "background": "#f0f7f2",
+      "background": "rgba(7,193,96,0.06)",
       "padding": "3px 6px",
       "border_radius": "4px",
       "font_size": "90%",
@@ -170,7 +170,7 @@
       "overflow": "hidden"
     },
     "th": {
-      "background": "#f0f7f2",
+      "background": "rgba(7,193,96,0.04)",
       "padding": "12px 16px",
       "text_align": "left",
       "font_weight": "600",
@@ -203,7 +203,7 @@
       "margin_top": "4px"
     },
     "list_item_text": {
-      "font_size": "15px",
+      "font_size": "16px",
       "color": "#333333",
       "line_height": "1.75",
       "letter_spacing": "0.5px"
@@ -229,7 +229,7 @@
       "margin_bottom": "12px"
     },
     "footnote_item": {
-      "font_size": "12px",
+      "font_size": "13px",
       "color": "#999999",
       "margin_bottom": "6px",
       "line_height": "1.6",

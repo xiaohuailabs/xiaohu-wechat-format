@@ -5,10 +5,10 @@
     "primary": "#1f2328",
     "accent": "#0969da",
     "background": "#ffffff",
-    "blockquote_bg": "#f6f8fa",
+    "blockquote_bg": "rgba(9,105,218,0.06)",
     "code_bg": "#f6f8fa",
     "hr_color": "#0969da",
-    "footnote_bg": "#ffffff"
+    "footnote_bg": "rgba(9,105,218,0.04)"
   },
   "styles": {
     "wrapper": {
@@ -16,7 +16,7 @@
       "padding": "16px"
     },
     "h1": {
-      "font_size": "29px",
+      "font_size": "26px",
       "font_weight": "700",
       "color": "#1f2328",
       "line_height": "1.26",
@@ -30,7 +30,7 @@
       "margin_bottom": "18px"
     },
     "h2": {
-      "font_size": "23px",
+      "font_size": "22px",
       "font_weight": "700",
       "color": "#1f2328",
       "line_height": "1.35",
@@ -52,18 +52,18 @@
       "margin_bottom": "14px"
     },
     "p": {
-      "font_size": "15px",
+      "font_size": "16px",
       "color": "#1f2328",
-      "line_height": "1.6",
+      "line_height": "1.75",
       "margin_top": "0",
       "margin_bottom": "16px",
       "letter_spacing": "0.5px",
-      "text_align": "left"
+      "text_align": "justify"
     },
     "blockquote": {
       "border": "1px solid #d8dee4",
       "border_left": "4px solid #218bff",
-      "background": "#f6f8fa",
+      "background": "rgba(9,105,218,0.06)",
       "padding": "14px 16px",
       "margin_top": "18px",
       "margin_bottom": "18px",
@@ -169,7 +169,7 @@
       "overflow": "hidden"
     },
     "th": {
-      "background": "#f6f8fa",
+      "background": "rgba(9,105,218,0.04)",
       "padding": "8px 16px",
       "border": "1px solid #d1d9e0",
       "text_align": "left",
@@ -202,9 +202,9 @@
       "margin_top": "4px"
     },
     "list_item_text": {
-      "font_size": "15px",
+      "font_size": "16px",
       "color": "#1f2328",
-      "line_height": "1.6",
+      "line_height": 1.75,
       "letter_spacing": "0.5px"
     },
     "list_wrapper": {
@@ -228,7 +228,7 @@
       "margin_bottom": "12px"
     },
     "footnote_item": {
-      "font_size": "12px",
+      "font_size": "13px",
       "color": "#999999",
       "margin_bottom": "6px",
       "line_height": "1.6",

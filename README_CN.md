@@ -9,7 +9,7 @@ Claude Code 公众号完整发布管线：**排版** → **封面**（可选）�
 ## 功能
 
 - **排版引擎**：Markdown 转微信公众号兼容的内联样式 HTML
-- **30 套主题**：5 大分类（深度长文 / 科技产品 / 文艺随笔 / 活力动态 / 模板布局），可视化画廊选择
+- **85 套主题**：5 大分类（深度长文 / 科技产品 / 文艺随笔 / 活力动态 / 模板布局），可视化画廊选择
 - **AI 内容增强**：自动识别对话体、金句、连续图片，套用 dialogue / callout / gallery 容器
 - **CJK 排版修复**：中英文自动加空格、加粗标点自动移出标记
 - **图片处理**：自动处理 Obsidian `![[image]]` 和标准 Markdown `![](image)` 引用
@@ -37,7 +37,8 @@ pip3 install markdown requests
   "vault_root": "/path/to/your/obsidian/vault",
   "settings": {
     "default_theme": "newspaper",
-    "auto_open_browser": true
+    "auto_open_browser": true,
+    "header_author_label": ""
   },
   "wechat": {
     "app_id": "你的AppID",
@@ -47,11 +48,18 @@ pip3 install markdown requests
   "cover": {
     "output_dir": "~/Documents/covers",
     "image_generation_script": ""
+  },
+  "smart_api": {
+    "base_url": "https://api.openai.com/v1",
+    "api_key": "你的API密钥",
+    "model": "gpt-4o-mini"
   }
 }
 ```
 
 - `wechat` 部分仅推送时需要，纯排版可以不填
+- `header_author_label`：卡片/时间线/hero 布局标题区显示的署名，留空则回退到 `wechat.author`，都没有就不显示
+- `smart_api`：仅 `--smart` AI 语义增强需要，任意 OpenAI 兼容接口
 - `cover` 部分仅生成封面时需要（详见下方封面配置）
 - 获取 AppID 和 AppSecret：微信公众号后台 → 设置与开发 → 基本配置
 - **重要**：需要把你的公网 IP 加到公众号后台的 IP 白名单里，否则 API 调用会报 40164 错误
@@ -70,7 +78,7 @@ pip3 install markdown requests
 python3 scripts/format.py --input article.md --gallery --recommend newspaper magazine ink
 ```
 
-在浏览器中用真实文章预览 20 个核心主题，选好后回到 Claude 说主题名。
+在浏览器中用真实文章预览 34 个核心主题，选好后回到 Claude 说主题名。
 
 ### 指定主题排版
 
